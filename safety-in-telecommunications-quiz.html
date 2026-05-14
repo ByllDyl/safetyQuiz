@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Safety in Telecommunications — Quiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a1a2a;
+    --paper: #f0f6fc;
+    --paper-dim: #d8e8f0;
+    --blue: #0d3b6e;
+    --blue-lt: #1a5a9e;
+    --gold: #b8860b;
+    --gold-lt: #d4a017;
+    --muted: #3a5a7a;
+    --green: #2d6a4f;
+    --shadow: rgba(10,26,42,0.18);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  body {
+    font-family:'Crimson Pro',Georgia,serif;
+    background:#06182a;
+    background-image:
+      radial-gradient(ellipse at 20% 15%,#0a2a44 0%,transparent 50%),
+      radial-gradient(ellipse at 80% 85%,#040f1a 0%,transparent 50%),
+      url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.012'%3E%3Cpath d='M40 0v80M0 40h80' stroke='%23fff' stroke-opacity='0.012' stroke-width='0.5'/%3E%3C/g%3E%3C/svg%3E");
+    min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;
+    padding:44px 20px 70px;
+  }
+
+  .hdr { text-align:center; margin-bottom:32px; animation:fadeDown .7s ease both; }
+  .hdr-eyebrow {
+    font-family:'Crimson Pro',serif; font-style:italic;
+    color:var(--gold-lt); font-size:.82rem; letter-spacing:.3em;
+    text-transform:uppercase; margin-bottom:10px;
+  }
+  .hdr h1 {
+    font-family:'Playfair Display',serif; font-weight:900;
+    font-size:clamp(1.7rem,5vw,2.8rem); color:#f0f6fc;
+    line-height:1.15; text-shadow:0 4px 28px rgba(0,0,0,.5);
+  }
+  .hdr h1 em { color:var(--gold-lt); font-style:italic; }
+  .hdr-sub { color:#6a9aba; font-size:.9rem; font-style:italic; margin-top:8px; }
+  .orn { color:var(--gold); opacity:.6; font-size:1.2rem; margin:8px 0; letter-spacing:.3em; }
+
+  .diff-badge {
+    display:inline-flex; align-items:center; gap:6px;
+    background:rgba(184,134,11,.15); border:1px solid rgba(184,134,11,.35);
+    color:var(--gold-lt); font-size:.72rem; font-weight:700;
+    letter-spacing:.12em; text-transform:uppercase;
+    padding:4px 14px; border-radius:99px; margin-top:10px;
+  }
+
+  .card {
+    background:var(--paper);
+    border-radius:20px; max-width:740px; width:100%;
+    padding:40px 46px;
+    box-shadow:0 0 0 1px rgba(184,134,11,.28),0 16px 60px rgba(0,0,0,.55);
+    position:relative; animation:fadeUp .65s ease both .18s; overflow:hidden;
+  }
+  .card::before {
+    content:''; position:absolute; top:0;left:0;right:0; height:5px;
+    background:linear-gradient(90deg,var(--blue),var(--gold),var(--blue));
+  }
+
+  .meta { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+  .qnum { font-size:.78rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+  .slive {
+    font-size:.78rem; font-weight:600; letter-spacing:.06em;
+    background:var(--blue); color:#ddf0ff; padding:3px 13px; border-radius:99px;
+  }
+  .track { height:7px; background:var(--paper-dim); border-radius:99px; margin-bottom:22px; overflow:hidden; }
+  .fill { height:100%; background:linear-gradient(90deg,var(--blue),var(--gold-lt)); border-radius:99px; transition:width .5s cubic-bezier(.4,0,.2,1); }
+
+  .cat-pill {
+    display:inline-block; font-size:.68rem; font-weight:700;
+    letter-spacing:.14em; text-transform:uppercase;
+    padding:3px 12px; border-radius:99px; margin-bottom:15px;
+  }
+  .cat-comm   { background:#e8f0fe; color:#0d3b6e; }
+  .cat-safety { background:#fde8e8; color:#7a1010; }
+  .cat-model  { background:#e8f5ee; color:#1b4332; }
+
+  .qtext {
+    font-family:'Playfair Display',serif; font-size:1.1rem;
+    color:var(--ink); line-height:1.65; margin-bottom:22px; font-weight:700;
+  }
+
+  .opts { display:flex; flex-direction:column; gap:9px; margin-bottom:18px; }
+  .opt {
+    display:flex; align-items:flex-start; gap:12px;
+    background:rgba(255,255,255,.6); border:1.5px solid rgba(13,59,110,.15);
+    border-radius:11px; padding:11px 16px; cursor:pointer;
+    font-family:'Crimson Pro',serif; font-size:1rem; color:var(--ink);
+    text-align:left; line-height:1.45; transition:all .17s ease;
+  }
+  .opt:hover:not(:disabled) {
+    background:rgba(255,255,255,.95); border-color:var(--gold);
+    transform:translateX(5px); box-shadow:-3px 0 0 var(--gold);
+  }
+  .opt .ltr {
+    flex-shrink:0; width:27px;height:27px; border-radius:50%;
+    background:var(--paper-dim); border:1.5px solid rgba(13,59,110,.18);
+    display:flex;align-items:center;justify-content:center;
+    font-size:.75rem;font-weight:700; color:var(--muted);
+    margin-top:1px; transition:all .17s;
+  }
+  .opt:hover:not(:disabled) .ltr { background:var(--gold); border-color:var(--gold); color:#fff; }
+  .opt.correct { background:#e4f5ec; border-color:var(--green); box-shadow:-3px 0 0 var(--green); }
+  .opt.correct .ltr { background:var(--green); border-color:var(--green); color:#fff; }
+  .opt.wrong   { background:#fbe8e8; border-color:#a52020; box-shadow:-3px 0 0 #a52020; }
+  .opt.wrong .ltr { background:#a52020; border-color:#a52020; color:#fff; }
+  .opt:disabled { cursor:default; }
+
+  .fb { display:none; padding:12px 16px; border-radius:10px; font-size:.93rem; line-height:1.55; margin-bottom:16px; }
+  .fb.show { display:block; animation:fadeIn .3s ease; }
+  .fb.correct { background:#e4f5ec; border-left:4px solid var(--green); color:#1a4a2c; }
+  .fb.wrong   { background:#fbe8e8; border-left:4px solid #a52020; color:#6b1515; }
+
+  .bot { display:flex; justify-content:flex-end; }
+  .nxt {
+    background:var(--blue); color:var(--paper); border:none; border-radius:10px;
+    padding:11px 28px; font-family:'Playfair Display',serif; font-size:.96rem;
+    font-weight:700; cursor:pointer; display:none; transition:background .2s,transform .15s;
+  }
+  .nxt:hover { background:var(--blue-lt); transform:translateY(-1px); }
+  .nxt.show { display:block; animation:fadeIn .3s ease; }
+
+  .results { display:none; text-align:center; }
+  .results.show { display:block; animation:fadeUp .5s ease; }
+
+  .ring-wrap { position:relative; width:155px;height:155px; margin:0 auto 20px; }
+  .ring-wrap svg { transform:rotate(-90deg); }
+  .rbg { fill:none; stroke:var(--paper-dim); stroke-width:11; }
+  .rfg { fill:none; stroke:url(#rg); stroke-width:11; stroke-linecap:round;
+         stroke-dasharray:377; stroke-dashoffset:377;
+         transition:stroke-dashoffset 1.2s cubic-bezier(.4,0,.2,1); }
+  .ring-in { position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center; }
+  .rnum { font-family:'Playfair Display',serif; font-size:2.6rem; font-weight:900; color:var(--ink); line-height:1; }
+  .rden { font-size:.82rem; color:var(--muted); }
+
+  .breakdown { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-bottom:22px; }
+  .bk { background:rgba(13,59,110,.07); border-radius:12px; padding:12px 18px; text-align:center; min-width:100px; }
+  .bk-n { font-family:'Playfair Display',serif; font-size:1.75rem; font-weight:900; line-height:1; }
+  .bk-n.comm   { color:var(--blue); }
+  .bk-n.safety { color:#a52020; }
+  .bk-n.model  { color:#1b4332; }
+  .bk-l { font-size:.73rem; color:var(--muted); margin-top:3px; font-style:italic; }
+
+  .rtitle { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--blue); margin-bottom:8px; font-weight:700; }
+  .rmsg { color:var(--muted); font-style:italic; font-size:.97rem; line-height:1.6; margin-bottom:24px; max-width:480px; margin-left:auto;margin-right:auto; }
+  .rbtn {
+    background:transparent; border:2px solid var(--blue); color:var(--blue);
+    border-radius:10px; padding:10px 30px; font-family:'Playfair Display',serif;
+    font-size:.95rem; font-weight:700; cursor:pointer; transition:all .2s; margin-bottom:28px;
+  }
+  .rbtn:hover { background:var(--blue); color:var(--paper); }
+
+  hr.div { border:none; border-top:1px solid var(--paper-dim); margin:0 0 18px; }
+  .rev-title { font-family:'Playfair Display',serif; font-size:1.05rem; color:var(--ink); text-align:left; margin-bottom:12px; }
+  .rev-item { text-align:left; padding:9px 0; border-bottom:1px solid var(--paper-dim); font-size:.87rem; line-height:1.5; }
+  .rev-item .rq { font-weight:700; color:var(--ink); margin-bottom:3px; }
+  .ok { color:var(--green); } .bad { color:#a52020; }
+
+  @keyframes fadeDown{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:none}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+  @media(max-width:540px){.card{padding:26px 20px;}.qtext{font-size:1rem;}.breakdown{gap:10px;}}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-eyebrow">OSHA · PPT-092-01</div>
+  <div class="orn">✦ ✦ ✦</div>
+  <h1>Safety in <em>Telecommunications</em></h1>
+  <p class="hdr-sub">Quiz · Communication · Safety Culture · Models & Concepts</p>
+  <div class="diff-badge">⚖️ Medium Difficulty</div>
+</div>
+
+<div class="card">
+
+  <div id="quiz">
+    <div class="meta">
+      <span class="qnum" id="qnum">Question 1 of 30</span>
+      <span class="slive" id="slive">Score: 0</span>
+    </div>
+    <div class="track"><div class="fill" id="fill" style="width:0%"></div></div>
+    <div class="cat-pill cat-comm" id="cat">Communication</div>
+    <div class="qtext" id="qtext"></div>
+    <div class="opts" id="opts"></div>
+    <div class="fb" id="fb"></div>
+    <div class="bot"><button class="nxt" id="nxt">Next Question →</button></div>
+  </div>
+
+  <div class="results" id="results">
+    <div class="ring-wrap">
+      <svg width="155" height="155" viewBox="0 0 155 155">
+        <defs>
+          <linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#0d3b6e"/>
+            <stop offset="100%" style="stop-color:#d4a017"/>
+          </linearGradient>
+        </defs>
+        <circle class="rbg" cx="77.5" cy="77.5" r="60"/>
+        <circle class="rfg" id="ring" cx="77.5" cy="77.5" r="60"/>
+      </svg>
+      <div class="ring-in">
+        <div class="rnum" id="rnum">0</div>
+        <div class="rden">out of 30</div>
+      </div>
+    </div>
+
+    <div class="breakdown">
+      <div class="bk"><div class="bk-n comm" id="sc">0</div><div class="bk-l">Communication<br>/ 12 items</div></div>
+      <div class="bk"><div class="bk-n safety" id="ss">0</div><div class="bk-l">Safety Culture<br>/ 10 items</div></div>
+      <div class="bk"><div class="bk-n model" id="sm">0</div><div class="bk-l">Models &amp; Concepts<br>/ 8 items</div></div>
+    </div>
+
+    <div class="rtitle" id="rtitle"></div>
+    <div class="rmsg" id="rmsg"></div>
+    <button class="rbtn" onclick="restart()">↺ Try Again</button>
+    <hr class="div">
+    <div class="rev-title">📋 Answer Review</div>
+    <div id="rev"></div>
+  </div>
+</div>
+
+<script>
+// cat: C=Communication, S=Safety Culture, M=Models & Concepts
+const Q = [
+
+  // ── COMMUNICATION (12) ─────────────────────────────────────
+  { cat:'C', pill:'cat-comm', label:'Communication',
+    q:'According to the lesson, what is the primary purpose of any workplace safety communication or program?',
+    o:['To fulfill government regulatory requirements','To change the behavior of employees','To reduce company insurance costs','To inform management of workplace hazards'],
+    a:1, e:'The lesson states clearly that "the main objective of any workplace safety communication or program is to change behavior." Everything — messaging, culture, and strategy — is aimed at behavioral change.' },
+
+  { cat:'C', pill:'cat-comm', label:'Communication',
+    q:'Which of the following is NOT listed as an element of an effective communication plan?',
+    o:['A clearly defined receiver','A clearly defined timeframe','A clearly defined budget','A clearly defined evaluative process'],
+    a:2, e:'The lesson identifies five elements of an effective communication plan: a clearly defined receiver, message, communication process, timeframe, and evaluative process. Budget is not listed as one of them.' },
+
+  { cat:'C', pill:'cat-comm', label:'Communication',
+    q:'According to the "Four Important Realities of Communication," what percentage of the meaning and impact of a message comes from HOW you say something?',
+    o:['20%','50%','80%','100%'],
+    a:2, e:'The lesson states that "communication is more psychological than anything; \'how\' you say something accounts for 80% of the meaning and impact." This underscores the importance of delivery, tone, and style.' },
+
+  { cat:'C', pill:'cat-comm', label:'Communication',
+    q:'Which of the following is listed as a consequence of failing to communicate safety information effectively?',
+    o:['Reduced company profits','Risk-taking behavior by employees','Increased hiring costs','Loss of government contracts'],
+    a:1, e:'The lesson lists several consequences of ineffective safety communication, including risk-taking by employees, incidents, injuries, lost workdays, reduced productivity, inability to comply with regulations, and higher insurance costs.' },
+
+  { cat:'C', pill:'cat-comm', label:'Communication',
+    q:'The lesson identifies four types of workers based on how they seek information differently, according to their perceived risk. Which of the following is NOT one of these four types?',
+    o:['Responsive individuals','Avoidant individuals','Aggressive individuals','Indifferent individuals'],
+    a:2, e:'The four types identified in the lesson are: Responsive, Avoidant, Proactive, and Indifferent individuals. "Aggressive individuals" is not one of them.' },
+
+  { cat:'C', pill:'cat-comm', label:'Communication',
+    q:'Which of the following is listed as a "Key to Communication" in the lesson?',
+    o:['Authoritative','Productive','Aggressive','Formal'],
+    a:1, e:'The four Keys to Communication listed in the lesson are: Interactive, Informative, Positive, and Productive. Being authoritative or aggressive is not recommended.' },
+
+  { cat:'C', pill:'cat-comm', label:'Communication',
+    q:'According to the lesson, what happens to a message the more people it passes through?',
+    o:['It becomes stronger and more credible','It becomes more distorted','It becomes shorter and more concise','It becomes more motivating'],
+    a:1, e:'The lesson notes that "the more people a communication goes through, the more distorted it becomes." This is why direct, clear communication channels are preferred for safety messages.' },
+
+  { cat:'C', pill:'cat-comm', label:'Communication',
+    q:'When communicating to influence someone\'s behavior, which of the following does the lesson recommend?',
+    o:['Demand compliance and cite regulations','Present solutions that contain your priorities and those of the individual you are influencing','Focus only on the negative consequences of non-compliance','Avoid discussing objections to keep the message positive'],
+    a:1, e:'The lesson advises to "present solutions that contain your priorities and those of the individual you are influencing." Effective influence involves addressing the other person\'s concerns and showing how change benefits them personally.' },
+
+  { cat:'C', pill:'cat-comm', label:'Communication',
+    q:'Which of the following represents one of the "Four Important Realities" about communication as stated in the lesson?',
+    o:['Good communication is more common than miscommunication','Miscommunication is more prevalent than good communication','Technology has solved most communication problems','Written communication is always more effective than verbal'],
+    a:1, e:'The lesson states as one of its four realities that "miscommunication is more prevalent than good communication." Recognizing this encourages communicators to be more deliberate and careful.' },
+
+  { cat:'C', pill:'cat-comm', label:'Communication',
+    q:'The lesson lists communication tips for safety professionals. Which of the following is one of those tips?',
+    o:['Use technical jargon to establish credibility','Tell Stories','Focus only on negative consequences to motivate change','Avoid involving senior management to keep messaging consistent'],
+    a:1, e:'Among the communication tips listed are: Use more Visuals, Tell Stories, Lead by Values, Use Positive Language, Involve Senior Management, Keep it Simple, and Ask more why Questions.' },
+
+  { cat:'C', pill:'cat-comm', label:'Communication',
+    q:'According to the lesson, effective communication reaches what in addition to the mind?',
+    o:['The management team','The regulatory body','The heart','The safety committee'],
+    a:2, e:'The lesson states that "effective communication reaches the heart as well as the mind." Safety communication must be emotionally resonant — not just informational — to truly change behavior.' },
+
+  { cat:'C', pill:'cat-comm', label:'Communication',
+    q:'Which phrase best describes how the lesson recommends planning workplace safety messages?',
+    o:['Like a legal notice or policy document','Like a mini advertising campaign','Like a formal incident report','Like an academic research paper'],
+    a:1, e:'The lesson advises to "plan your safety messages like a mini advertising campaign." This means using marketing-based tactics: consistent branding, targeted messaging, and multiple message placements.' },
+
+  // ── SAFETY CULTURE (10) ────────────────────────────────────
+  { cat:'S', pill:'cat-safety', label:'Safety Culture',
+    q:'How does the lesson define "Safety Culture"?',
+    o:['A set of government regulations that must be posted in the workplace','A mindset and attitude — a value that must be embedded into every aspect of the company and its vision','A quarterly training program that employees must complete','A department within the organization responsible for all safety matters'],
+    a:1, e:'The lesson defines Safety Culture as "a mindset, an attitude" where "safety messages must be designed into every aspect of the company" and it "must be the company\'s vision — a value for all employees." It\'s not a program; it\'s a pervasive organizational mindset.' },
+
+  { cat:'S', pill:'cat-safety', label:'Safety Culture',
+    q:'Which of the following is listed as a challenge to effective workplace safety communication?',
+    o:['Too many safety regulations to track','Employee Buy-In','Lack of safety equipment','Poor facility design'],
+    a:1, e:'The lesson lists five challenges: Attitudes, Communication, Competing Priorities, Employee Buy-In, and Creating Safety Awareness. Getting employees to genuinely commit to safety — buy in — is consistently identified as a major challenge.' },
+
+  { cat:'S', pill:'cat-safety', label:'Safety Culture',
+    q:'The "A\'s of Safety" listed in the lesson include which of the following?',
+    o:['Alertness, Agility, Accuracy, Authority','Attitudes, Awareness, Action, Accountability','Administration, Auditing, Alerting, Approving','Analysis, Assessment, Application, Achievement'],
+    a:1, e:'The lesson identifies eight A\'s of Safety: Attitudes, Awareness, Action, Accountability, Acknowledge, Assist, Appreciate, and Approve. These cover both the internal mindset and the interpersonal behaviors needed for a strong safety culture.' },
+
+  { cat:'S', pill:'cat-safety', label:'Safety Culture',
+    q:'Which of the following topics is listed as a subject of workplace safety communication in the lesson?',
+    o:['Sales targets and revenue goals','Back Safety and Ergonomics','Customer service standards','Human resources policies'],
+    a:1, e:'The lesson lists many safety communication topics, including Back Safety, Ergonomics, Fire Safety, Electrical Safety, Slips/Trips/Falls, Emergency Preparedness, Incident Investigations, and more.' },
+
+  { cat:'S', pill:'cat-safety', label:'Safety Culture',
+    q:'The lesson states that safety must be the company\'s vision. What does this imply about who is responsible for safety culture?',
+    o:['Only the safety officer is responsible for maintaining safety culture','Safety culture is a government responsibility regulated by OSHA','Safety is a value for all employees, making every person responsible for the culture','Safety is primarily the responsibility of supervisors and team leaders'],
+    a:2, e:'By describing safety as "the company\'s vision — a value for all employees," the lesson implies that safety culture is everyone\'s shared responsibility, not just the safety department\'s or management\'s.' },
+
+  { cat:'S', pill:'cat-safety', label:'Safety Culture',
+    q:'What does the lesson suggest is the best way to get good results in any workplace safety initiative?',
+    o:['Implementing stricter disciplinary measures for violations','Improving your style of communication','Investing in better safety equipment','Increasing the frequency of safety inspections'],
+    a:1, e:'The fourth "reality" of communication in the lesson states: "The best way to get good results in anything is to improve your style of communication." This places communication skill at the center of all safety outcomes.' },
+
+  { cat:'S', pill:'cat-safety', label:'Safety Culture',
+    q:'The lesson mentions three ways to get employees engaged in a workplace safety message. Which of the following is one of them?',
+    o:['Threatening them with disciplinary action','Watching it through training videos','Posting it only in the company policy manual','Sending a single mass email to all staff'],
+    a:1, e:'The three engagement methods listed are: Watching it (training videos), Hearing it (discussion and feedback on safety issues), and Reading it (posters, email, newsletter). Multi-channel delivery improves reach and retention.' },
+
+  { cat:'S', pill:'cat-safety', label:'Safety Culture',
+    q:'According to the lesson, a good safety communication considers "who should deliver it." Why is the messenger important?',
+    o:['A senior manager\'s salary makes the message more official','A good message badly delivered is lost — the messenger\'s credibility matters','Messengers with technical backgrounds are always most effective','It is not important who delivers the message, only the content matters'],
+    a:1, e:'The lesson explicitly warns: "Consider who should deliver it, and what credibility they have — a good message badly delivered is lost." Credibility of the source directly affects whether the message is received and believed.' },
+
+  { cat:'S', pill:'cat-safety', label:'Safety Culture',
+    q:'The lesson states that safety culture involves "continual improvement." What does this mean for a safety program?',
+    o:['Safety goals are set once and never revisited','Safety programs should be evaluated and updated regularly, with ongoing involvement from all employees','Only management needs to improve their approach to safety','Improvement efforts should focus only on reducing insurance costs'],
+    a:1, e:'The lesson\'s Safety Culture section states that "continual improvement is the goal" and that it requires "involvement and thinking of all people in the safety process." Safety is not a one-time effort but an ongoing organizational commitment.' },
+
+  { cat:'S', pill:'cat-safety', label:'Safety Culture',
+    q:'Which of the following statements reflects a common attitude among workers that makes safety communication challenging, as described in the lesson?',
+    o:['"I always follow the safety procedures exactly."','"It won\'t happen to me! I\'ve been doing this job for 15 years."','"I welcome any safety training the company provides."','"I always report near-misses to my supervisor."'],
+    a:1, e:'The lesson highlights typical resistant attitudes: "It won\'t happen to me!", "I\'ve been doing this job for 15 years…", "I\'m CAREFUL!", and "I don\'t want to get someone in trouble!" These attitudes are obstacles that effective safety communication must overcome.' },
+
+  { cat:'S', pill:'cat-safety', label:'Safety Culture',
+    q:'According to the lesson, what is the secret to developing highly successful safety communication?',
+    o:['Enforcing strict penalties for non-compliance','Using marketing-based tactics and treating safety messages as a mini-marketing campaign','Hiring professional safety trainers from outside the organization','Conducting monthly mandatory safety drills'],
+    a:1, e:'The lesson concludes: "The secret to developing highly successful safety communication is to use marketing-based tactics. Treating safety messages as a mini-marketing campaign will provide better safety performance, communication and camaraderie in the workplace."' },
+
+  // ── MODELS & CONCEPTS (8) ─────────────────────────────────
+  { cat:'M', pill:'cat-model', label:'Models & Concepts',
+    q:'In the Communication Process model shown in the lesson, which element can interfere with the message between sender and receiver?',
+    o:['Feedback','Noise','The evaluative process','The message channel'],
+    a:1, e:'The Communication Process diagram in the lesson shows Noise as the element that disrupts the transmission of a message from the sender to the receiver. Noise represents any factor — physical, psychological, or semantic — that distorts the message.' },
+
+  { cat:'M', pill:'cat-model', label:'Models & Concepts',
+    q:'The Betari Box Model describes a cycle involving attitude and behavior. What is the correct sequence in this model?',
+    o:['Your attitude → Your behavior → My attitude → My behavior','My attitude → My behavior → Your attitude → Your behavior','My behavior → My attitude → Your behavior → Your attitude','Your behavior → My attitude → My behavior → Your attitude'],
+    a:1, e:'The Betari Box Model shows a cycle: My Attitude → affects → My Behavior → affects → Your Attitude → affects → Your Behavior → which in turn affects My Attitude again. This illustrates how individual attitudes create a ripple effect on the entire workplace culture.' },
+
+  { cat:'M', pill:'cat-model', label:'Models & Concepts',
+    q:'What is the main implication of the Betari Box Model for workplace safety?',
+    o:['Only managers\' attitudes matter because they set the tone','Individual attitudes are isolated and do not affect coworkers','One person\'s negative safety attitude can negatively affect others\' behavior, creating a chain reaction','Safety attitudes can only be changed through formal training'],
+    a:2, e:'The Betari Box shows that attitudes and behaviors are mutually contagious. A supervisor with a poor safety attitude will influence workers\' behaviors, which feeds back to reinforce negative attitudes. Conversely, a positive safety mindset creates a positive cycle.' },
+
+  { cat:'M', pill:'cat-model', label:'Models & Concepts',
+    q:'SMART objectives are mentioned in the lesson for communication planning. What does the "A" in SMART stand for?',
+    o:['Aggressive','Ambitious','Attainable','Analytical'],
+    a:2, e:'SMART stands for Specific, Measurable, Attainable, Relevant, and Time-bound. "Attainable" ensures the safety communication objective is realistic and achievable given available resources and constraints.' },
+
+  { cat:'M', pill:'cat-model', label:'Models & Concepts',
+    q:'According to the Communication Process model in the lesson, what role does the "Message Channel" play?',
+    o:['It filters out unnecessary information before it reaches the receiver','It is the medium through which the encoded message travels from sender to receiver','It evaluates whether the receiver understood the message correctly','It is responsible for generating feedback'],
+    a:1, e:'In the Communication Process model (Sender → Encoding → Message Channel → Decoding → Receiver), the Message Channel is the medium — verbal, written, email, web, pictures — through which the encoded message is transmitted toward the receiver.' },
+
+  { cat:'M', pill:'cat-model', label:'Models & Concepts',
+    q:'The lesson mentions that the communication process involves input factors such as Personality/Style and "View of others/self." What is listed as a key feedback factor?',
+    o:['Budget and resources','Climate and how well you handle feedback','Technical expertise of the communicator','The number of message channels used'],
+    a:1, e:'The lesson\'s Communication Process slide lists feedback factors as: Climate, Complainant\'s behavior, and "How well you handle feedback." These feedback dimensions determine whether the communication loop is successfully completed.' },
+
+  { cat:'M', pill:'cat-model', label:'Models & Concepts',
+    q:'According to the lesson, when "Getting the Message Across," which approach is recommended to improve communication success?',
+    o:['Deliver the same message through a single, standardized channel for consistency','Consider using several different ways to communicate the same message','Keep the message as technical and detailed as possible','Deliver all safety messages in writing to create a legal record'],
+    a:1, e:'The lesson advises to "consider using several different ways to communicate the same message." Multi-channel delivery — videos, discussions, posters, emails — ensures the message reaches different types of learners and reinforces retention.' },
+
+  { cat:'M', pill:'cat-model', label:'Models & Concepts',
+    q:'The Communication Process model in the lesson shows factors that affect the sender\'s side. Which of the following is listed as a sender factor?',
+    o:['Noise from the environment','The receiver\'s attitudes and perceptions','The sender\'s own experiences, attitudes, and skills','The evaluative process used to measure communication success'],
+    a:2, e:'The lesson\'s Communications Process table shows that the sender\'s side includes Experience, Attitudes, and Skills. These factors shape how the sender encodes and delivers the message — just as the receiver\'s experiences and attitudes shape how the message is decoded.' },
+];
+
+const TOTAL = Q.length;
+let cur=0, score=0, sc=0, ss=0, sm=0, answered=false, ua=[];
+
+function load(){
+  const q=Q[cur];
+  document.getElementById('qnum').textContent=`Question ${cur+1} of ${TOTAL}`;
+  document.getElementById('slive').textContent=`Score: ${score}`;
+  document.getElementById('fill').style.width=`${(cur/TOTAL)*100}%`;
+  const cp=document.getElementById('cat');
+  cp.textContent=q.label; cp.className=`cat-pill ${q.pill}`;
+  document.getElementById('qtext').textContent=q.q;
+  const od=document.getElementById('opts'); od.innerHTML='';
+  q.o.forEach((o,i)=>{
+    const b=document.createElement('button');
+    b.className='opt';
+    b.innerHTML=`<span class="ltr">${String.fromCharCode(65+i)}</span><span>${o}</span>`;
+    b.onclick=()=>pick(i);
+    od.appendChild(b);
+  });
+  document.getElementById('fb').className='fb';
+  document.getElementById('fb').textContent='';
+  const nb=document.getElementById('nxt');
+  nb.className='nxt';
+  nb.textContent=cur===TOTAL-1?'See Results ✦':'Next Question →';
+  answered=false;
+}
+
+function pick(i){
+  if(answered) return;
+  answered=true;
+  const q=Q[cur]; ua.push(i);
+  document.querySelectorAll('.opt').forEach((b,idx)=>{
+    b.disabled=true;
+    if(idx===q.a) b.classList.add('correct');
+    else if(idx===i&&i!==q.a) b.classList.add('wrong');
+  });
+  const fb=document.getElementById('fb');
+  if(i===q.a){
+    score++;
+    if(q.cat==='C') sc++;
+    else if(q.cat==='S') ss++;
+    else sm++;
+    fb.className='fb correct show';
+    fb.innerHTML=`<strong>✅ Correct!</strong> ${q.e}`;
+  } else {
+    fb.className='fb wrong show';
+    fb.innerHTML=`<strong>❌ Incorrect.</strong> ${q.e}`;
+  }
+  document.getElementById('slive').textContent=`Score: ${score}`;
+  document.getElementById('nxt').className='nxt show';
+}
+
+document.getElementById('nxt').onclick=()=>{ cur++; cur<TOTAL?load():showR(); };
+
+function showR(){
+  document.getElementById('quiz').style.display='none';
+  document.getElementById('results').className='results show';
+  document.getElementById('rnum').textContent=score;
+  document.getElementById('sc').textContent=sc;
+  document.getElementById('ss').textContent=ss;
+  document.getElementById('sm').textContent=sm;
+  const c=2*Math.PI*60, p=score/TOTAL;
+  setTimeout(()=>{ document.getElementById('ring').style.strokeDashoffset=c-(c*p); },100);
+  let t,m;
+  if(score===30){t='🏆 Perfect — Safety Expert!';m='A flawless 30/30! You have mastered every concept in this Safety in Telecommunications lesson. Outstanding!';}
+  else if(score>=25){t='🌟 Safety Champion!';m='Excellent work! You have a strong command of safety communication, culture, and key models. Very well done.';}
+  else if(score>=20){t='📚 Safety-Conscious Learner!';m='Good effort! You know the material well. Review the items you missed to build a complete understanding.';}
+  else if(score>=15){t='📖 Building Awareness!';m='You\'re on the right track. Re-read the lesson with focus on the models, communication strategies, and safety culture concepts.';}
+  else {t='🕯️ Start the Journey!';m:'Every safety professional starts somewhere. Study the lesson carefully — these concepts can save lives when applied correctly.';}
+  document.getElementById('rtitle').textContent=t;
+  document.getElementById('rmsg').textContent=m;
+
+  const rv=document.getElementById('rev'); rv.innerHTML='';
+  Q.forEach((q,i)=>{
+    const ok=ua[i]===q.a;
+    const d=document.createElement('div'); d.className='rev-item';
+    d.innerHTML=`<div class="rq">${i+1}. [${q.label}] ${q.q}</div>
+      <div class="${ok?'ok':'bad'}">${ok?'✅ Correct: ':'❌ Your answer: '}${q.o[ua[i]]}${!ok?` | Correct: ${q.o[q.a]}`:''}</div>`;
+    rv.appendChild(d);
+  });
+}
+
+function restart(){
+  cur=0;score=0;sc=0;ss=0;sm=0;answered=false;ua=[];
+  document.getElementById('results').className='results';
+  document.getElementById('quiz').style.display='block';
+  document.getElementById('ring').style.strokeDashoffset=377;
+  load();
+}
+
+load();
+</script>
+</body>
+</html>
