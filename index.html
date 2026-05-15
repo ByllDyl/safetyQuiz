@@ -3,196 +3,118 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Safety in Telecommunications — Quiz</title>
+<title>Fire Safety & Telecommunications Safety — 100-Item Quiz</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #0a1a2a;
-    --paper: #f0f6fc;
-    --paper-dim: #d8e8f0;
-    --blue: #0d3b6e;
-    --blue-lt: #1a5a9e;
-    --gold: #b8860b;
-    --gold-lt: #d4a017;
-    --muted: #3a5a7a;
-    --green: #2d6a4f;
-    --shadow: rgba(10,26,42,0.18);
+    --ink:#0d1a10;--paper:#f2f8f3;--paper-dim:#d5e8d9;
+    --green:#1a5c2a;--green-lt:#267a38;
+    --red:#8b1a1a;--red-lt:#b52020;
+    --gold:#b8860b;--gold-lt:#d4a017;
+    --muted:#3a5a42;--good:#2d6a4f;
   }
-
   *{box-sizing:border-box;margin:0;padding:0;}
-
-  body {
+  body{
     font-family:'Crimson Pro',Georgia,serif;
-    background:#06182a;
+    background:#071209;
     background-image:
-      radial-gradient(ellipse at 20% 15%,#0a2a44 0%,transparent 50%),
-      radial-gradient(ellipse at 80% 85%,#040f1a 0%,transparent 50%),
-      url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.012'%3E%3Cpath d='M40 0v80M0 40h80' stroke='%23fff' stroke-opacity='0.012' stroke-width='0.5'/%3E%3C/g%3E%3C/svg%3E");
-    min-height:100vh;
-    display:flex;flex-direction:column;align-items:center;
+      radial-gradient(ellipse at 20% 15%,#0d2410 0%,transparent 50%),
+      radial-gradient(ellipse at 80% 85%,#040e06 0%,transparent 50%);
+    min-height:100vh;display:flex;flex-direction:column;align-items:center;
     padding:44px 20px 70px;
   }
-
-  .hdr { text-align:center; margin-bottom:32px; animation:fadeDown .7s ease both; }
-  .hdr-eyebrow {
-    font-family:'Crimson Pro',serif; font-style:italic;
-    color:var(--gold-lt); font-size:.82rem; letter-spacing:.3em;
-    text-transform:uppercase; margin-bottom:10px;
-  }
-  .hdr h1 {
-    font-family:'Playfair Display',serif; font-weight:900;
-    font-size:clamp(1.7rem,5vw,2.8rem); color:#f0f6fc;
-    line-height:1.15; text-shadow:0 4px 28px rgba(0,0,0,.5);
-  }
-  .hdr h1 em { color:var(--gold-lt); font-style:italic; }
-  .hdr-sub { color:#6a9aba; font-size:.9rem; font-style:italic; margin-top:8px; }
-  .orn { color:var(--gold); opacity:.6; font-size:1.2rem; margin:8px 0; letter-spacing:.3em; }
-
-  .diff-badge {
-    display:inline-flex; align-items:center; gap:6px;
-    background:rgba(184,134,11,.15); border:1px solid rgba(184,134,11,.35);
-    color:var(--gold-lt); font-size:.72rem; font-weight:700;
-    letter-spacing:.12em; text-transform:uppercase;
-    padding:4px 14px; border-radius:99px; margin-top:10px;
-  }
-
-  .card {
-    background:var(--paper);
-    border-radius:20px; max-width:740px; width:100%;
-    padding:40px 46px;
-    box-shadow:0 0 0 1px rgba(184,134,11,.28),0 16px 60px rgba(0,0,0,.55);
-    position:relative; animation:fadeUp .65s ease both .18s; overflow:hidden;
-  }
-  .card::before {
-    content:''; position:absolute; top:0;left:0;right:0; height:5px;
-    background:linear-gradient(90deg,var(--blue),var(--gold),var(--blue));
-  }
-
-  .meta { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
-  .qnum { font-size:.78rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
-  .slive {
-    font-size:.78rem; font-weight:600; letter-spacing:.06em;
-    background:var(--blue); color:#ddf0ff; padding:3px 13px; border-radius:99px;
-  }
-  .track { height:7px; background:var(--paper-dim); border-radius:99px; margin-bottom:22px; overflow:hidden; }
-  .fill { height:100%; background:linear-gradient(90deg,var(--blue),var(--gold-lt)); border-radius:99px; transition:width .5s cubic-bezier(.4,0,.2,1); }
-
-  .cat-pill {
-    display:inline-block; font-size:.68rem; font-weight:700;
-    letter-spacing:.14em; text-transform:uppercase;
-    padding:3px 12px; border-radius:99px; margin-bottom:15px;
-  }
-  .cat-comm   { background:#e8f0fe; color:#0d3b6e; }
-  .cat-safety { background:#fde8e8; color:#7a1010; }
-  .cat-model  { background:#e8f5ee; color:#1b4332; }
-
-  .qtext {
-    font-family:'Playfair Display',serif; font-size:1.1rem;
-    color:var(--ink); line-height:1.65; margin-bottom:22px; font-weight:700;
-  }
-
-  .opts { display:flex; flex-direction:column; gap:9px; margin-bottom:18px; }
-  .opt {
-    display:flex; align-items:flex-start; gap:12px;
-    background:rgba(255,255,255,.6); border:1.5px solid rgba(13,59,110,.15);
-    border-radius:11px; padding:11px 16px; cursor:pointer;
-    font-family:'Crimson Pro',serif; font-size:1rem; color:var(--ink);
-    text-align:left; line-height:1.45; transition:all .17s ease;
-  }
-  .opt:hover:not(:disabled) {
-    background:rgba(255,255,255,.95); border-color:var(--gold);
-    transform:translateX(5px); box-shadow:-3px 0 0 var(--gold);
-  }
-  .opt .ltr {
-    flex-shrink:0; width:27px;height:27px; border-radius:50%;
-    background:var(--paper-dim); border:1.5px solid rgba(13,59,110,.18);
-    display:flex;align-items:center;justify-content:center;
-    font-size:.75rem;font-weight:700; color:var(--muted);
-    margin-top:1px; transition:all .17s;
-  }
-  .opt:hover:not(:disabled) .ltr { background:var(--gold); border-color:var(--gold); color:#fff; }
-  .opt.correct { background:#e4f5ec; border-color:var(--green); box-shadow:-3px 0 0 var(--green); }
-  .opt.correct .ltr { background:var(--green); border-color:var(--green); color:#fff; }
-  .opt.wrong   { background:#fbe8e8; border-color:#a52020; box-shadow:-3px 0 0 #a52020; }
-  .opt.wrong .ltr { background:#a52020; border-color:#a52020; color:#fff; }
-  .opt:disabled { cursor:default; }
-
-  .fb { display:none; padding:12px 16px; border-radius:10px; font-size:.93rem; line-height:1.55; margin-bottom:16px; }
-  .fb.show { display:block; animation:fadeIn .3s ease; }
-  .fb.correct { background:#e4f5ec; border-left:4px solid var(--green); color:#1a4a2c; }
-  .fb.wrong   { background:#fbe8e8; border-left:4px solid #a52020; color:#6b1515; }
-
-  .bot { display:flex; justify-content:flex-end; }
-  .nxt {
-    background:var(--blue); color:var(--paper); border:none; border-radius:10px;
-    padding:11px 28px; font-family:'Playfair Display',serif; font-size:.96rem;
-    font-weight:700; cursor:pointer; display:none; transition:background .2s,transform .15s;
-  }
-  .nxt:hover { background:var(--blue-lt); transform:translateY(-1px); }
-  .nxt.show { display:block; animation:fadeIn .3s ease; }
-
-  .results { display:none; text-align:center; }
-  .results.show { display:block; animation:fadeUp .5s ease; }
-
-  .ring-wrap { position:relative; width:155px;height:155px; margin:0 auto 20px; }
-  .ring-wrap svg { transform:rotate(-90deg); }
-  .rbg { fill:none; stroke:var(--paper-dim); stroke-width:11; }
-  .rfg { fill:none; stroke:url(#rg); stroke-width:11; stroke-linecap:round;
-         stroke-dasharray:377; stroke-dashoffset:377;
-         transition:stroke-dashoffset 1.2s cubic-bezier(.4,0,.2,1); }
-  .ring-in { position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center; }
-  .rnum { font-family:'Playfair Display',serif; font-size:2.6rem; font-weight:900; color:var(--ink); line-height:1; }
-  .rden { font-size:.82rem; color:var(--muted); }
-
-  .breakdown { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-bottom:22px; }
-  .bk { background:rgba(13,59,110,.07); border-radius:12px; padding:12px 18px; text-align:center; min-width:100px; }
-  .bk-n { font-family:'Playfair Display',serif; font-size:1.75rem; font-weight:900; line-height:1; }
-  .bk-n.comm   { color:var(--blue); }
-  .bk-n.safety { color:#a52020; }
-  .bk-n.model  { color:#1b4332; }
-  .bk-l { font-size:.73rem; color:var(--muted); margin-top:3px; font-style:italic; }
-
-  .rtitle { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--blue); margin-bottom:8px; font-weight:700; }
-  .rmsg { color:var(--muted); font-style:italic; font-size:.97rem; line-height:1.6; margin-bottom:24px; max-width:480px; margin-left:auto;margin-right:auto; }
-  .rbtn {
-    background:transparent; border:2px solid var(--blue); color:var(--blue);
-    border-radius:10px; padding:10px 30px; font-family:'Playfair Display',serif;
-    font-size:.95rem; font-weight:700; cursor:pointer; transition:all .2s; margin-bottom:28px;
-  }
-  .rbtn:hover { background:var(--blue); color:var(--paper); }
-
-  hr.div { border:none; border-top:1px solid var(--paper-dim); margin:0 0 18px; }
-  .rev-title { font-family:'Playfair Display',serif; font-size:1.05rem; color:var(--ink); text-align:left; margin-bottom:12px; }
-  .rev-item { text-align:left; padding:9px 0; border-bottom:1px solid var(--paper-dim); font-size:.87rem; line-height:1.5; }
-  .rev-item .rq { font-weight:700; color:var(--ink); margin-bottom:3px; }
-  .ok { color:var(--green); } .bad { color:#a52020; }
-
+  .hdr{text-align:center;margin-bottom:32px;animation:fadeDown .7s ease both;}
+  .hdr-eyebrow{font-family:'Crimson Pro',serif;font-style:italic;color:var(--gold-lt);font-size:.82rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:10px;}
+  .hdr h1{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(1.6rem,4.5vw,2.7rem);color:#f2f8f3;line-height:1.15;text-shadow:0 4px 28px rgba(0,0,0,.5);}
+  .hdr h1 em{color:var(--gold-lt);font-style:italic;}
+  .hdr-sub{color:#6aaa7a;font-size:.9rem;font-style:italic;margin-top:8px;}
+  .orn{color:var(--gold);opacity:.6;font-size:1.2rem;margin:8px 0;letter-spacing:.3em;}
+  .diff-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(184,134,11,.15);border:1px solid rgba(184,134,11,.35);color:var(--gold-lt);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 14px;border-radius:99px;margin-top:10px;}
+  .card{background:var(--paper);border-radius:20px;max-width:740px;width:100%;padding:40px 46px;box-shadow:0 0 0 1px rgba(184,134,11,.28),0 16px 60px rgba(0,0,0,.55);position:relative;animation:fadeUp .65s ease both .18s;overflow:hidden;}
+  .card::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--red),var(--gold),var(--green));}
+  .meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+  .qnum{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+  .slive{font-size:.78rem;font-weight:600;letter-spacing:.06em;background:var(--green);color:#e8f5ea;padding:3px 13px;border-radius:99px;}
+  .track{height:7px;background:var(--paper-dim);border-radius:99px;margin-bottom:22px;overflow:hidden;}
+  .fill{height:100%;background:linear-gradient(90deg,var(--red),var(--gold-lt),var(--green));border-radius:99px;transition:width .5s cubic-bezier(.4,0,.2,1);}
+  .cat-pill{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 12px;border-radius:99px;margin-bottom:15px;}
+  .cat-fire{background:#fde8e8;color:#7a1010;}
+  .cat-exit{background:#fff3e0;color:#7a4000;}
+  .cat-eap {background:#e8f0fe;color:#0d3b6e;}
+  .cat-ext {background:#fce4ec;color:#880e4f;}
+  .cat-comm{background:#e8f5e9;color:#1b5e20;}
+  .cat-model{background:#f3e5f5;color:#4a148c;}
+  .qtext{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--ink);line-height:1.65;margin-bottom:22px;font-weight:700;}
+  .opts{display:flex;flex-direction:column;gap:9px;margin-bottom:18px;}
+  .opt{display:flex;align-items:flex-start;gap:12px;background:rgba(255,255,255,.6);border:1.5px solid rgba(26,92,42,.15);border-radius:11px;padding:11px 16px;cursor:pointer;font-family:'Crimson Pro',serif;font-size:1rem;color:var(--ink);text-align:left;line-height:1.45;transition:all .17s ease;}
+  .opt:hover:not(:disabled){background:rgba(255,255,255,.95);border-color:var(--gold);transform:translateX(5px);box-shadow:-3px 0 0 var(--gold);}
+  .opt .ltr{flex-shrink:0;width:27px;height:27px;border-radius:50%;background:var(--paper-dim);border:1.5px solid rgba(26,92,42,.18);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:var(--muted);margin-top:1px;transition:all .17s;}
+  .opt:hover:not(:disabled) .ltr{background:var(--gold);border-color:var(--gold);color:#fff;}
+  .opt.correct{background:#e4f5ec;border-color:var(--good);box-shadow:-3px 0 0 var(--good);}
+  .opt.correct .ltr{background:var(--good);border-color:var(--good);color:#fff;}
+  .opt.wrong{background:#fbe8e8;border-color:var(--red);box-shadow:-3px 0 0 var(--red);}
+  .opt.wrong .ltr{background:var(--red);border-color:var(--red);color:#fff;}
+  .opt:disabled{cursor:default;}
+  .fb{display:none;padding:12px 16px;border-radius:10px;font-size:.93rem;line-height:1.55;margin-bottom:16px;}
+  .fb.show{display:block;animation:fadeIn .3s ease;}
+  .fb.correct{background:#e4f5ec;border-left:4px solid var(--good);color:#1a4a2c;}
+  .fb.wrong{background:#fbe8e8;border-left:4px solid var(--red);color:#6b1515;}
+  .bot{display:flex;justify-content:flex-end;}
+  .nxt{background:var(--green);color:var(--paper);border:none;border-radius:10px;padding:11px 28px;font-family:'Playfair Display',serif;font-size:.96rem;font-weight:700;cursor:pointer;display:none;transition:background .2s,transform .15s;}
+  .nxt:hover{background:var(--green-lt);transform:translateY(-1px);}
+  .nxt.show{display:block;animation:fadeIn .3s ease;}
+  .results{display:none;text-align:center;}
+  .results.show{display:block;animation:fadeUp .5s ease;}
+  .ring-wrap{position:relative;width:155px;height:155px;margin:0 auto 20px;}
+  .ring-wrap svg{transform:rotate(-90deg);}
+  .rbg{fill:none;stroke:var(--paper-dim);stroke-width:11;}
+  .rfg{fill:none;stroke:url(#rg);stroke-width:11;stroke-linecap:round;stroke-dasharray:377;stroke-dashoffset:377;transition:stroke-dashoffset 1.2s cubic-bezier(.4,0,.2,1);}
+  .ring-in{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;}
+  .rnum{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:900;color:var(--ink);line-height:1;}
+  .rden{font-size:.82rem;color:var(--muted);}
+  .breakdown{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:22px;}
+  .bk{background:rgba(26,92,42,.07);border-radius:12px;padding:10px 14px;text-align:center;min-width:90px;}
+  .bk-n{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;line-height:1;}
+  .bk-n.fire{color:var(--red);}
+  .bk-n.exit{color:#c46000;}
+  .bk-n.eap{color:#0d3b6e;}
+  .bk-n.ext{color:#880e4f;}
+  .bk-n.comm{color:#1b5e20;}
+  .bk-n.model{color:#4a148c;}
+  .bk-l{font-size:.68rem;color:var(--muted);margin-top:3px;font-style:italic;}
+  .rtitle{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--green);margin-bottom:8px;font-weight:700;}
+  .rmsg{color:var(--muted);font-style:italic;font-size:.97rem;line-height:1.6;margin-bottom:24px;max-width:480px;margin-left:auto;margin-right:auto;}
+  .rbtn{background:transparent;border:2px solid var(--green);color:var(--green);border-radius:10px;padding:10px 30px;font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .2s;margin-bottom:28px;}
+  .rbtn:hover{background:var(--green);color:var(--paper);}
+  hr.div{border:none;border-top:1px solid var(--paper-dim);margin:0 0 18px;}
+  .rev-title{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--ink);text-align:left;margin-bottom:12px;}
+  .rev-item{text-align:left;padding:9px 0;border-bottom:1px solid var(--paper-dim);font-size:.87rem;line-height:1.5;}
+  .rev-item .rq{font-weight:700;color:var(--ink);margin-bottom:3px;}
+  .ok{color:var(--good);}.bad{color:var(--red);}
   @keyframes fadeDown{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:none}}
   @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
   @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-
-  @media(max-width:540px){.card{padding:26px 20px;}.qtext{font-size:1rem;}.breakdown{gap:10px;}}
+  @media(max-width:540px){.card{padding:26px 20px;}.qtext{font-size:1rem;}.breakdown{gap:8px;}}
 </style>
 </head>
 <body>
 
 <div class="hdr">
-  <div class="hdr-eyebrow">OSHA · PPT-092-01</div>
-  <div class="orn">✦ ✦ ✦</div>
-  <h1>Safety in <em>Telecommunications</em></h1>
-  <p class="hdr-sub">Quiz · Communication · Safety Culture · Models & Concepts</p>
+  <div class="hdr-eyebrow">OSHA · Saint Mary's University</div>
+  <div class="orn">🔥 ✦ 📡</div>
+  <h1>Fire Safety &amp; <em>Telecommunications</em> Safety</h1>
+  <p class="hdr-sub">100-Item Combined Quiz · Fire · Exit Routes · EAP · Extinguishers · Communication · Models</p>
   <div class="diff-badge">⚖️ Medium Difficulty</div>
 </div>
 
 <div class="card">
-
   <div id="quiz">
     <div class="meta">
-      <span class="qnum" id="qnum">Question 1 of 30</span>
+      <span class="qnum" id="qnum">Question 1 of 100</span>
       <span class="slive" id="slive">Score: 0</span>
     </div>
     <div class="track"><div class="fill" id="fill" style="width:0%"></div></div>
-    <div class="cat-pill cat-comm" id="cat">Communication</div>
+    <div class="cat-pill cat-fire" id="cat">Fire Safety</div>
     <div class="qtext" id="qtext"></div>
     <div class="opts" id="opts"></div>
     <div class="fb" id="fb"></div>
@@ -204,8 +126,9 @@
       <svg width="155" height="155" viewBox="0 0 155 155">
         <defs>
           <linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style="stop-color:#0d3b6e"/>
-            <stop offset="100%" style="stop-color:#d4a017"/>
+            <stop offset="0%" style="stop-color:#8b1a1a"/>
+            <stop offset="50%" style="stop-color:#d4a017"/>
+            <stop offset="100%" style="stop-color:#1a5c2a"/>
           </linearGradient>
         </defs>
         <circle class="rbg" cx="77.5" cy="77.5" r="60"/>
@@ -213,16 +136,17 @@
       </svg>
       <div class="ring-in">
         <div class="rnum" id="rnum">0</div>
-        <div class="rden">out of 30</div>
+        <div class="rden">out of 100</div>
       </div>
     </div>
-
     <div class="breakdown">
-      <div class="bk"><div class="bk-n comm" id="sc">0</div><div class="bk-l">Communication<br>/ 12 items</div></div>
-      <div class="bk"><div class="bk-n safety" id="ss">0</div><div class="bk-l">Safety Culture<br>/ 10 items</div></div>
-      <div class="bk"><div class="bk-n model" id="sm">0</div><div class="bk-l">Models &amp; Concepts<br>/ 8 items</div></div>
+      <div class="bk"><div class="bk-n fire" id="s1">0</div><div class="bk-l">Fire Basics<br>/18</div></div>
+      <div class="bk"><div class="bk-n exit" id="s2">0</div><div class="bk-l">Exit Routes<br>/17</div></div>
+      <div class="bk"><div class="bk-n eap" id="s3">0</div><div class="bk-l">EAP<br>/15</div></div>
+      <div class="bk"><div class="bk-n ext" id="s4">0</div><div class="bk-l">Extinguishers<br>/15</div></div>
+      <div class="bk"><div class="bk-n comm" id="s5">0</div><div class="bk-l">Communication<br>/20</div></div>
+      <div class="bk"><div class="bk-n model" id="s6">0</div><div class="bk-l">Models<br>/15</div></div>
     </div>
-
     <div class="rtitle" id="rtitle"></div>
     <div class="rmsg" id="rmsg"></div>
     <button class="rbtn" onclick="restart()">↺ Try Again</button>
@@ -233,173 +157,548 @@
 </div>
 
 <script>
-// cat: C=Communication, S=Safety Culture, M=Models & Concepts
-const Q = [
+// cats: F=Fire Basics, X=Exit Routes, E=EAP, T=Extinguishers, C=Communication, M=Models
+const Q=[
+// ── FIRE BASICS (18) ──────────────────────────────────────
+{cat:'F',pill:'cat-fire',label:'Fire Basics',
+q:'According to the lesson, how many factors are required for a fire to occur?',
+o:['Two — heat and fuel','Three — oxygen source, fuel source, and ignition mechanism','Four — oxygen, fuel, heat, and a chemical reaction','One — a sufficient ignition source'],
+a:1,e:'The lesson states there are 3 factors needed for a fire: an oxygen source, a fuel source, and an ignition mechanism. All three must be present for fire to occur.'},
 
-  // ── COMMUNICATION (12) ─────────────────────────────────────
-  { cat:'C', pill:'cat-comm', label:'Communication',
-    q:'According to the lesson, what is the primary purpose of any workplace safety communication or program?',
-    o:['To fulfill government regulatory requirements','To change the behavior of employees','To reduce company insurance costs','To inform management of workplace hazards'],
-    a:1, e:'The lesson states clearly that "the main objective of any workplace safety communication or program is to change behavior." Everything — messaging, culture, and strategy — is aimed at behavioral change.' },
+{cat:'F',pill:'cat-fire',label:'Fire Basics',
+q:'A Class A fire involves which type of materials?',
+o:['Flammable liquids and gases','Energized electrical equipment','Ordinary combustible materials such as paper, wood, and cloth','Combustible metals such as magnesium and titanium'],
+a:2,e:'Class A fires involve ordinary combustible materials — paper, wood, cloth, and some rubber and plastic materials. These are the most common type of fire.'},
 
-  { cat:'C', pill:'cat-comm', label:'Communication',
-    q:'Which of the following is NOT listed as an element of an effective communication plan?',
-    o:['A clearly defined receiver','A clearly defined timeframe','A clearly defined budget','A clearly defined evaluative process'],
-    a:2, e:'The lesson identifies five elements of an effective communication plan: a clearly defined receiver, message, communication process, timeframe, and evaluative process. Budget is not listed as one of them.' },
+{cat:'F',pill:'cat-fire',label:'Fire Basics',
+q:'A Class B fire involves which of the following?',
+o:['Paper and wood','Flammable or combustible liquids, flammable gases, and greases','Energized electrical equipment','Combustible metals'],
+a:1,e:'Class B fires involve flammable or combustible liquids, flammable gases, greases and similar materials, and some rubber and plastic materials.'},
 
-  { cat:'C', pill:'cat-comm', label:'Communication',
-    q:'According to the "Four Important Realities of Communication," what percentage of the meaning and impact of a message comes from HOW you say something?',
-    o:['20%','50%','80%','100%'],
-    a:2, e:'The lesson states that "communication is more psychological than anything; \'how\' you say something accounts for 80% of the meaning and impact." This underscores the importance of delivery, tone, and style.' },
+{cat:'F',pill:'cat-fire',label:'Fire Basics',
+q:'What is the defining characteristic of a Class C fire?',
+o:['It involves grease and oil in kitchen areas','It involves ordinary combustibles like paper','It involves energized electrical equipment, requiring electrically nonconductive extinguishing media','It involves combustible metals like sodium and lithium'],
+a:2,e:'Class C fires involve energized electrical equipment. The key requirement is that the extinguishing media must be electrically nonconductive to protect the employee.'},
 
-  { cat:'C', pill:'cat-comm', label:'Communication',
-    q:'Which of the following is listed as a consequence of failing to communicate safety information effectively?',
-    o:['Reduced company profits','Risk-taking behavior by employees','Increased hiring costs','Loss of government contracts'],
-    a:1, e:'The lesson lists several consequences of ineffective safety communication, including risk-taking by employees, incidents, injuries, lost workdays, reduced productivity, inability to comply with regulations, and higher insurance costs.' },
+{cat:'F',pill:'cat-fire',label:'Fire Basics',
+q:'Class D fires involve which of the following materials?',
+o:['Kitchen grease and cooking oils','Flammable gases and liquids','Ordinary combustibles like cloth and paper','Combustible metals such as magnesium, titanium, zirconium, sodium, lithium, and potassium'],
+a:3,e:'Class D fires involve combustible metals. Magnesium, titanium, zirconium, sodium, lithium, and potassium are all examples given in the lesson.'},
 
-  { cat:'C', pill:'cat-comm', label:'Communication',
-    q:'The lesson identifies four types of workers based on how they seek information differently, according to their perceived risk. Which of the following is NOT one of these four types?',
-    o:['Responsive individuals','Avoidant individuals','Aggressive individuals','Indifferent individuals'],
-    a:2, e:'The four types identified in the lesson are: Responsive, Avoidant, Proactive, and Indifferent individuals. "Aggressive individuals" is not one of them.' },
+{cat:'F',pill:'cat-fire',label:'Fire Basics',
+q:'Class K fires are primarily associated with which hazard area?',
+o:['Electrical rooms and server centers','Fuel storage tanks and chemical warehouses','Kitchen grease and oil fires — a significant risk area','Waste material disposal zones'],
+a:2,e:'Class K covers kitchen grease and oil fires. The lesson notes this is a significant risk area and warns never to pick up a burning pan of grease, as it causes dangerous splashing.'},
 
-  { cat:'C', pill:'cat-comm', label:'Communication',
-    q:'Which of the following is listed as a "Key to Communication" in the lesson?',
-    o:['Authoritative','Productive','Aggressive','Formal'],
-    a:1, e:'The four Keys to Communication listed in the lesson are: Interactive, Informative, Positive, and Productive. Being authoritative or aggressive is not recommended.' },
+{cat:'F',pill:'cat-fire',label:'Fire Basics',
+q:'What does the lesson say you should NEVER do with a burning pan of grease?',
+o:['Spray it with water to cool it down','Pick it up','Cover it with a cloth to smother the flame','Use a Class A extinguisher on it'],
+a:1,e:'The lesson explicitly states: "Never pick up a burning pan of grease!" Picking it up causes dangerous splashing that can spread the fire and cause serious burns.'},
 
-  { cat:'C', pill:'cat-comm', label:'Communication',
-    q:'According to the lesson, what happens to a message the more people it passes through?',
-    o:['It becomes stronger and more credible','It becomes more distorted','It becomes shorter and more concise','It becomes more motivating'],
-    a:1, e:'The lesson notes that "the more people a communication goes through, the more distorted it becomes." This is why direct, clear communication channels are preferred for safety messages.' },
+{cat:'F',pill:'cat-fire',label:'Fire Basics',
+q:'The lesson identifies fire protection requirements that include fire brigades, fixed fire suppression equipment, fire detection systems, and what else?',
+o:['Personal protective equipment for firefighters','Fire or employee alarm systems','Evacuation helicopters and refuge zones','Chemical neutralization agents'],
+a:1,e:'The Fire Protection subpart covers: fire brigades, all portable and fixed fire suppression equipment, fire detection systems, and fire or employee alarm systems.'},
 
-  { cat:'C', pill:'cat-comm', label:'Communication',
-    q:'When communicating to influence someone\'s behavior, which of the following does the lesson recommend?',
-    o:['Demand compliance and cite regulations','Present solutions that contain your priorities and those of the individual you are influencing','Focus only on the negative consequences of non-compliance','Avoid discussing objections to keep the message positive'],
-    a:1, e:'The lesson advises to "present solutions that contain your priorities and those of the individual you are influencing." Effective influence involves addressing the other person\'s concerns and showing how change benefits them personally.' },
+{cat:'F',pill:'cat-fire',label:'Fire Basics',
+q:'Which of the following is listed as a common fire problem in long-term care settings?',
+o:['Structural fires from building collapse','Fires due to smoking','Chemical plant fires from industrial processes','Arson by outside intruders'],
+a:1,e:'The lesson lists four common fire problems in long-term care settings: kitchen fires, electrical fires, waste material fires, and fires due to smoking.'},
 
-  { cat:'C', pill:'cat-comm', label:'Communication',
-    q:'Which of the following represents one of the "Four Important Realities" about communication as stated in the lesson?',
-    o:['Good communication is more common than miscommunication','Miscommunication is more prevalent than good communication','Technology has solved most communication problems','Written communication is always more effective than verbal'],
-    a:1, e:'The lesson states as one of its four realities that "miscommunication is more prevalent than good communication." Recognizing this encourages communicators to be more deliberate and careful.' },
+{cat:'F',pill:'cat-fire',label:'Fire Basics',
+q:'According to the lesson, what is the KEY objective in protecting occupants in a healthcare building fire?',
+o:['Evacuate all occupants immediately to the parking lot','Have firefighters arrive within 3 minutes','Provide occupants with enough protection to enable them to survive a fire while remaining in the building','Lock all fire doors to contain the blaze'],
+a:2,e:'The lesson states the key is to "provide occupants with enough protection to enable them to survive a fire while remaining in the building" — this reflects the defend-in-place strategy common in healthcare settings.'},
 
-  { cat:'C', pill:'cat-comm', label:'Communication',
-    q:'The lesson lists communication tips for safety professionals. Which of the following is one of those tips?',
-    o:['Use technical jargon to establish credibility','Tell Stories','Focus only on negative consequences to motivate change','Avoid involving senior management to keep messaging consistent'],
-    a:1, e:'Among the communication tips listed are: Use more Visuals, Tell Stories, Lead by Values, Use Positive Language, Involve Senior Management, Keep it Simple, and Ask more why Questions.' },
+{cat:'F',pill:'cat-fire',label:'Fire Basics',
+q:'Which of the following is listed as a key element of fire safety in healthcare settings?',
+o:['Mandatory evacuation to the street for all fires','Compartmentation and sprinkler systems','Locking all windows during a fire','Removing all patients to outdoor areas immediately'],
+a:1,e:'The key elements listed are: building construction, sprinkler system, detection and alarm systems, horizontal movement to safety, compartmentation, and staff training.'},
 
-  { cat:'C', pill:'cat-comm', label:'Communication',
-    q:'According to the lesson, effective communication reaches what in addition to the mind?',
-    o:['The management team','The regulatory body','The heart','The safety committee'],
-    a:2, e:'The lesson states that "effective communication reaches the heart as well as the mind." Safety communication must be emotionally resonant — not just informational — to truly change behavior.' },
+{cat:'F',pill:'cat-fire',label:'Fire Basics',
+q:'The lesson\'s fire prevention plan must include a list of all major fire hazards and proper handling of hazardous materials. What else must it include?',
+o:['The names of certified firefighters on staff','Potential ignition sources and their control, and the type of fire protection equipment needed for each hazard','The building\'s insurance policy number and claim procedures','Records of past fire incidents and near-misses'],
+a:1,e:'A fire prevention plan must include: a list of all major fire hazards, proper handling and storage procedures for hazardous materials, potential ignition sources and their control, and the type of fire protection equipment necessary for each major hazard.'},
 
-  { cat:'C', pill:'cat-comm', label:'Communication',
-    q:'Which phrase best describes how the lesson recommends planning workplace safety messages?',
-    o:['Like a legal notice or policy document','Like a mini advertising campaign','Like a formal incident report','Like an academic research paper'],
-    a:1, e:'The lesson advises to "plan your safety messages like a mini advertising campaign." This means using marketing-based tactics: consistent branding, targeted messaging, and multiple message placements.' },
+{cat:'F',pill:'cat-fire',label:'Fire Basics',
+q:'What does the fire prevention plan require regarding flammable waste materials?',
+o:['They must be incinerated on-site weekly','Procedures must be in place to control their accumulation','All flammable waste must be stored in the basement','They may be stored openly as long as smoking is prohibited nearby'],
+a:1,e:'The lesson states that the fire prevention plan must include "procedures to control accumulations of flammable and combustible waste materials," illustrating this with the example of paint cans left open and not disposed of after work.'},
 
-  // ── SAFETY CULTURE (10) ────────────────────────────────────
-  { cat:'S', pill:'cat-safety', label:'Safety Culture',
-    q:'How does the lesson define "Safety Culture"?',
-    o:['A set of government regulations that must be posted in the workplace','A mindset and attitude — a value that must be embedded into every aspect of the company and its vision','A quarterly training program that employees must complete','A department within the organization responsible for all safety matters'],
-    a:1, e:'The lesson defines Safety Culture as "a mindset, an attitude" where "safety messages must be designed into every aspect of the company" and it "must be the company\'s vision — a value for all employees." It\'s not a program; it\'s a pervasive organizational mindset.' },
+{cat:'F',pill:'cat-fire',label:'Fire Basics',
+q:'Which of the following is a listed strategy for fire prevention in long-term care settings?',
+o:['Installing security cameras in all patient rooms','Recognizing every fire drill as a learning and teaching opportunity','Requiring patients to sign fire safety waivers','Limiting staff to one fire extinguisher training per career'],
+a:1,e:'The lesson\'s strategies include: talking with patients and families about fire hazards from smoking, assessing smoking behaviors, alerting staff to exit obstructions, knowing extinguisher locations, and recognizing every fire drill as a learning/teaching opportunity.'},
 
-  { cat:'S', pill:'cat-safety', label:'Safety Culture',
-    q:'Which of the following is listed as a challenge to effective workplace safety communication?',
-    o:['Too many safety regulations to track','Employee Buy-In','Lack of safety equipment','Poor facility design'],
-    a:1, e:'The lesson lists five challenges: Attitudes, Communication, Competing Priorities, Employee Buy-In, and Creating Safety Awareness. Getting employees to genuinely commit to safety — buy in — is consistently identified as a major challenge.' },
+{cat:'F',pill:'cat-fire',label:'Fire Basics',
+q:'What does the lesson recommend regarding employee education for fire safety?',
+o:['Education should only occur once during onboarding','Only supervisors need fire safety education','Employee education should focus especially on appliance use, smoking, with reminders and debriefing after drills','Education must be conducted by an outside certified trainer'],
+a:2,e:'The lesson advises: recognize the importance of employee education; special focus on use of appliances/equipment and smoking; provide reminders; and conduct debriefing after drills and events.'},
 
-  { cat:'S', pill:'cat-safety', label:'Safety Culture',
-    q:'The "A\'s of Safety" listed in the lesson include which of the following?',
-    o:['Alertness, Agility, Accuracy, Authority','Attitudes, Awareness, Action, Accountability','Administration, Auditing, Alerting, Approving','Analysis, Assessment, Application, Achievement'],
-    a:1, e:'The lesson identifies eight A\'s of Safety: Attitudes, Awareness, Action, Accountability, Acknowledge, Assist, Appreciate, and Approve. These cover both the internal mindset and the interpersonal behaviors needed for a strong safety culture.' },
+{cat:'F',pill:'cat-fire',label:'Fire Basics',
+q:'The lesson ends with the phrase "Think Safety, Not Just Compliance!" What does this imply?',
+o:['Following OSHA rules is sufficient for fire safety','Compliance checklists are the most important tool','Fire safety must go beyond merely following rules — it requires genuine awareness and a safety mindset','Inspectors should be prioritized over employee training'],
+a:2,e:'"Think Safety, Not Just Compliance!" means that merely meeting regulatory requirements is not enough. True fire safety requires a proactive safety mindset: knowing exits, using extinguishers properly, and actively identifying and eliminating hazards.'},
 
-  { cat:'S', pill:'cat-safety', label:'Safety Culture',
-    q:'Which of the following topics is listed as a subject of workplace safety communication in the lesson?',
-    o:['Sales targets and revenue goals','Back Safety and Ergonomics','Customer service standards','Human resources policies'],
-    a:1, e:'The lesson lists many safety communication topics, including Back Safety, Ergonomics, Fire Safety, Electrical Safety, Slips/Trips/Falls, Emergency Preparedness, Incident Investigations, and more.' },
+{cat:'F',pill:'cat-fire',label:'Fire Basics',
+q:'What are the four keys to fire protection success listed in the lesson?',
+o:['Speed, strength, teamwork, and equipment','A clear plan; employee education and practice; awareness of fire exits and extinguisher locations; and awareness/abatement of fire hazards','Installing sprinklers, training firefighters, buying extinguishers, and posting signs','Inspections, documentation, insurance, and emergency contacts'],
+a:1,e:'The lesson\'s "Keys to Success" are: a clear plan; employee education and practice; awareness of fire exits and use/location of fire extinguishers; and awareness/abatement of potential fire hazards.'},
 
-  { cat:'S', pill:'cat-safety', label:'Safety Culture',
-    q:'The lesson states that safety must be the company\'s vision. What does this imply about who is responsible for safety culture?',
-    o:['Only the safety officer is responsible for maintaining safety culture','Safety culture is a government responsibility regulated by OSHA','Safety is a value for all employees, making every person responsible for the culture','Safety is primarily the responsibility of supervisors and team leaders'],
-    a:2, e:'By describing safety as "the company\'s vision — a value for all employees," the lesson implies that safety culture is everyone\'s shared responsibility, not just the safety department\'s or management\'s.' },
+{cat:'F',pill:'cat-fire',label:'Fire Basics',
+q:'Which extinguisher class specifically covers grease fire areas, and what is the maximum travel distance requirement to reach one?',
+o:['Class B — 50 feet','Class K — 30 feet','Class A — 75 feet','Class D — 20 feet'],
+a:1,e:'The lesson specifies that for Class K (grease fire areas), the maximum travel distance to an extinguisher is 30 feet. For general use, the standard travel distance is 75 feet.'},
 
-  { cat:'S', pill:'cat-safety', label:'Safety Culture',
-    q:'What does the lesson suggest is the best way to get good results in any workplace safety initiative?',
-    o:['Implementing stricter disciplinary measures for violations','Improving your style of communication','Investing in better safety equipment','Increasing the frequency of safety inspections'],
-    a:1, e:'The fourth "reality" of communication in the lesson states: "The best way to get good results in anything is to improve your style of communication." This places communication skill at the center of all safety outcomes.' },
+// ── EXIT ROUTES (17) ───────────────────────────────────────
+{cat:'X',pill:'cat-exit',label:'Exit Routes',
+q:'How does the lesson define an "Exit Route"?',
+o:['Any door that leads outside a building','A continuous and unobstructed path of exit travel from any point within a workplace to a place of safety','The hallway leading to a stairwell','A marked area on the floor indicating safe zones'],
+a:1,e:'An Exit Route is defined as a continuous and unobstructed path of exit travel from any point within a workplace to a place of safety. This covers the entire path from any location to the outside.'},
 
-  { cat:'S', pill:'cat-safety', label:'Safety Culture',
-    q:'The lesson mentions three ways to get employees engaged in a workplace safety message. Which of the following is one of them?',
-    o:['Threatening them with disciplinary action','Watching it through training videos','Posting it only in the company policy manual','Sending a single mass email to all staff'],
-    a:1, e:'The three engagement methods listed are: Watching it (training videos), Hearing it (discussion and feedback on safety issues), and Reading it (posters, email, newsletter). Multi-channel delivery improves reach and retention.' },
+{cat:'X',pill:'cat-exit',label:'Exit Routes',
+q:'What is "Exit Access" as defined in the lesson?',
+o:['The final door that opens to the outside','A refuge area within the building','That part of an exit route that leads to an exit — such as a corridor leading to a stairway','The outdoor area immediately beyond the exit door'],
+a:2,e:'Exit access is the part of the exit route that leads to an exit — for example, a corridor that leads to a stairway. It is the approach portion of the exit route.'},
 
-  { cat:'S', pill:'cat-safety', label:'Safety Culture',
-    q:'According to the lesson, a good safety communication considers "who should deliver it." Why is the messenger important?',
-    o:['A senior manager\'s salary makes the message more official','A good message badly delivered is lost — the messenger\'s credibility matters','Messengers with technical backgrounds are always most effective','It is not important who delivers the message, only the content matters'],
-    a:1, e:'The lesson explicitly warns: "Consider who should deliver it, and what credibility they have — a good message badly delivered is lost." Credibility of the source directly affects whether the message is received and believed.' },
+{cat:'X',pill:'cat-exit',label:'Exit Routes',
+q:'How is "Exit Discharge" defined in the lesson?',
+o:['The emergency alarm signal that initiates evacuation','The part of the exit route that leads directly outside or to a street, walkway, refuge area, or open area with access to the outside','The fire door separating the exit from the main building','The assembly area designated after evacuation'],
+a:1,e:'Exit Discharge is the final part of the exit route — it leads directly outside or to a street, walkway, refuge area, or open area with access to the outside.'},
 
-  { cat:'S', pill:'cat-safety', label:'Safety Culture',
-    q:'The lesson states that safety culture involves "continual improvement." What does this mean for a safety program?',
-    o:['Safety goals are set once and never revisited','Safety programs should be evaluated and updated regularly, with ongoing involvement from all employees','Only management needs to improve their approach to safety','Improvement efforts should focus only on reducing insurance costs'],
-    a:1, e:'The lesson\'s Safety Culture section states that "continual improvement is the goal" and that it requires "involvement and thinking of all people in the safety process." Safety is not a one-time effort but an ongoing organizational commitment.' },
+{cat:'X',pill:'cat-exit',label:'Exit Routes',
+q:'What are the minimum ceiling height and width requirements for an exit route?',
+o:['At least 6 feet high and 24 inches wide','At least 7 feet 6 inches high and 28 inches wide','At least 8 feet high and 36 inches wide','At least 6 feet 8 inches high and 32 inches wide'],
+a:1,e:'The lesson specifies that an exit route ceiling must be at least 7\'6" (seven feet six inches) high and at least 28 inches wide. These dimensions ensure safe passage during evacuation.'},
 
-  { cat:'S', pill:'cat-safety', label:'Safety Culture',
-    q:'Which of the following statements reflects a common attitude among workers that makes safety communication challenging, as described in the lesson?',
-    o:['"I always follow the safety procedures exactly."','"It won\'t happen to me! I\'ve been doing this job for 15 years."','"I welcome any safety training the company provides."','"I always report near-misses to my supervisor."'],
-    a:1, e:'The lesson highlights typical resistant attitudes: "It won\'t happen to me!", "I\'ve been doing this job for 15 years…", "I\'m CAREFUL!", and "I don\'t want to get someone in trouble!" These attitudes are obstacles that effective safety communication must overcome.' },
+{cat:'X',pill:'cat-exit',label:'Exit Routes',
+q:'What does the regulation state about the minimum number of exit routes required in a workplace?',
+o:['Only one exit route is required as long as it is clearly marked','At least two exit routes must be available to permit prompt evacuation during an emergency','Three exit routes are required for any building with more than 50 employees','The number is determined solely by local building codes'],
+a:1,e:'The regulation states that at least two exit routes must be available in a workplace to permit prompt evacuation during an emergency. Multiple routes ensure that if one is blocked, another is available.'},
 
-  { cat:'S', pill:'cat-safety', label:'Safety Culture',
-    q:'According to the lesson, what is the secret to developing highly successful safety communication?',
-    o:['Enforcing strict penalties for non-compliance','Using marketing-based tactics and treating safety messages as a mini-marketing campaign','Hiring professional safety trainers from outside the organization','Conducting monthly mandatory safety drills'],
-    a:1, e:'The lesson concludes: "The secret to developing highly successful safety communication is to use marketing-based tactics. Treating safety messages as a mini-marketing campaign will provide better safety performance, communication and camaraderie in the workplace."' },
+{cat:'X',pill:'cat-exit',label:'Exit Routes',
+q:'Why must exit routes be located as far away from each other as practical?',
+o:['To comply with architectural design standards','To ensure that if one exit route is blocked by fire or smoke, employees can evacuate using the second exit route','To make it easier for employees to remember where exits are','To allow both entrances and exits to use the same path'],
+a:1,e:'Exit routes must be as far apart as practical so that if one is blocked by fire or smoke, the other remains usable. This separation is a critical safety redundancy requirement.'},
 
-  // ── MODELS & CONCEPTS (8) ─────────────────────────────────
-  { cat:'M', pill:'cat-model', label:'Models & Concepts',
-    q:'In the Communication Process model shown in the lesson, which element can interfere with the message between sender and receiver?',
-    o:['Feedback','Noise','The evaluative process','The message channel'],
-    a:1, e:'The Communication Process diagram in the lesson shows Noise as the element that disrupts the transmission of a message from the sender to the receiver. Noise represents any factor — physical, psychological, or semantic — that distorts the message.' },
+{cat:'X',pill:'cat-exit',label:'Exit Routes',
+q:'What type of door is required for exit routes?',
+o:['A sliding door for easy mass evacuation','A revolving door for high-traffic areas','A side-hinged exit door','A push-bar double door only'],
+a:2,e:'The lesson specifies that a side-hinged exit door must be used. This type of door swings open easily and does not require special knowledge to operate during an emergency.'},
 
-  { cat:'M', pill:'cat-model', label:'Models & Concepts',
-    q:'The Betari Box Model describes a cycle involving attitude and behavior. What is the correct sequence in this model?',
-    o:['Your attitude → Your behavior → My attitude → My behavior','My attitude → My behavior → Your attitude → Your behavior','My behavior → My attitude → Your behavior → Your attitude','Your behavior → My attitude → My behavior → Your attitude'],
-    a:1, e:'The Betari Box Model shows a cycle: My Attitude → affects → My Behavior → affects → Your Attitude → affects → Your Behavior → which in turn affects My Attitude again. This illustrates how individual attitudes create a ripple effect on the entire workplace culture.' },
+{cat:'X',pill:'cat-exit',label:'Exit Routes',
+q:'What does the requirement that "exit doors must be unlocked from the inside" mean in practice?',
+o:['Exit doors can be locked at all times if a key is posted nearby','Employees must always be able to open exit doors from the inside without a key or special knowledge during an emergency','Exit doors may be electronically locked if a guard is present','Only supervisors need to know the exit door codes'],
+a:1,e:'Exit doors must be unlocked from the inside so that employees can always escape without needing a key or special knowledge. Locking exits so they cannot be opened from inside is a serious safety violation.'},
 
-  { cat:'M', pill:'cat-model', label:'Models & Concepts',
-    q:'What is the main implication of the Betari Box Model for workplace safety?',
-    o:['Only managers\' attitudes matter because they set the tone','Individual attitudes are isolated and do not affect coworkers','One person\'s negative safety attitude can negatively affect others\' behavior, creating a chain reaction','Safety attitudes can only be changed through formal training'],
-    a:2, e:'The Betari Box shows that attitudes and behaviors are mutually contagious. A supervisor with a poor safety attitude will influence workers\' behaviors, which feeds back to reinforce negative attitudes. Conversely, a positive safety mindset creates a positive cycle.' },
+{cat:'X',pill:'cat-exit',label:'Exit Routes',
+q:'What does the lesson require about EXIT signs?',
+o:['Signs must use pictograms instead of words','Signs must say "EXIT" and be at least 6 inches high with letters at least ¾ inch wide','Signs may be any color as long as they are lit','Signs need only be posted at the main entrance/exit'],
+a:1,e:'Exit signs must say "EXIT," be at least 6 inches high, and the letters must be at least ¾ inch wide. This ensures visibility from a reasonable distance during an emergency.'},
 
-  { cat:'M', pill:'cat-model', label:'Models & Concepts',
-    q:'SMART objectives are mentioned in the lesson for communication planning. What does the "A" in SMART stand for?',
-    o:['Aggressive','Ambitious','Attainable','Analytical'],
-    a:2, e:'SMART stands for Specific, Measurable, Attainable, Relevant, and Time-bound. "Attainable" ensures the safety communication objective is realistic and achievable given available resources and constraints.' },
+{cat:'X',pill:'cat-exit',label:'Exit Routes',
+q:'What does the lesson require about exit route lighting and marking?',
+o:['Exit lighting is optional if the building has emergency generators','Lighting and marking of exits must be clearly visible at all times','Marking is required only during business hours','Lighting must be activated only when a fire alarm sounds'],
+a:1,e:'The lesson states that lighting and marking of exits must be clearly visible. This is a continuous requirement — not just during emergencies — so employees always know where exits are.'},
 
-  { cat:'M', pill:'cat-model', label:'Models & Concepts',
-    q:'According to the Communication Process model in the lesson, what role does the "Message Channel" play?',
-    o:['It filters out unnecessary information before it reaches the receiver','It is the medium through which the encoded message travels from sender to receiver','It evaluates whether the receiver understood the message correctly','It is responsible for generating feedback'],
-    a:1, e:'In the Communication Process model (Sender → Encoding → Message Channel → Decoding → Receiver), the Message Channel is the medium — verbal, written, email, web, pictures — through which the encoded message is transmitted toward the receiver.' },
+{cat:'X',pill:'cat-exit',label:'Exit Routes',
+q:'Which of the following is listed as a safeguard that must be in working order at all times?',
+o:['Air conditioning and ventilation systems','Sprinklers, alarms, and exit lighting','Security cameras and electronic access systems','PA system and intercom'],
+a:1,e:'The lesson specifies that safeguards — including sprinklers, alarms, and exit lighting — must be in working order at all times. They cannot be deactivated or left in disrepair.'},
 
-  { cat:'M', pill:'cat-model', label:'Models & Concepts',
-    q:'The lesson mentions that the communication process involves input factors such as Personality/Style and "View of others/self." What is listed as a key feedback factor?',
-    o:['Budget and resources','Climate and how well you handle feedback','Technical expertise of the communicator','The number of message channels used'],
-    a:1, e:'The lesson\'s Communication Process slide lists feedback factors as: Climate, Complainant\'s behavior, and "How well you handle feedback." These feedback dimensions determine whether the communication loop is successfully completed.' },
+{cat:'X',pill:'cat-exit',label:'Exit Routes',
+q:'What does the requirement that "exit routes must be permanent" mean?',
+o:['Exit routes can be changed during construction as long as employees are notified','Exit routes must be fixed parts of the workplace structure, not improvised or temporary paths','Exit routes must be repainted every year to maintain their status','Permanence applies only to multi-story buildings'],
+a:1,e:'Exit routes must be permanent structural features of the workplace — not temporary, improvised, or changeable paths. This ensures employees always know where to go in an emergency.'},
 
-  { cat:'M', pill:'cat-model', label:'Models & Concepts',
-    q:'According to the lesson, when "Getting the Message Across," which approach is recommended to improve communication success?',
-    o:['Deliver the same message through a single, standardized channel for consistency','Consider using several different ways to communicate the same message','Keep the message as technical and detailed as possible','Deliver all safety messages in writing to create a legal record'],
-    a:1, e:'The lesson advises to "consider using several different ways to communicate the same message." Multi-channel delivery — videos, discussions, posters, emails — ensures the message reaches different types of learners and reinforces retention.' },
+{cat:'X',pill:'cat-exit',label:'Exit Routes',
+q:'What does "an exit must be separated by fire resistant materials" require?',
+o:['All walls in the building must be fire-resistant','The protected exit path must be enclosed with materials that resist fire, preventing it from filling with fire or smoke quickly','Exits must be located near fire suppression equipment','Exit doors must be made of fireproof metal'],
+a:1,e:'Exits must be separated by fire resistant materials so that the protected exit path remains usable during a fire. This prevents smoke and flames from filling the exit route too quickly.'},
 
-  { cat:'M', pill:'cat-model', label:'Models & Concepts',
-    q:'The Communication Process model in the lesson shows factors that affect the sender\'s side. Which of the following is listed as a sender factor?',
-    o:['Noise from the environment','The receiver\'s attitudes and perceptions','The sender\'s own experiences, attitudes, and skills','The evaluative process used to measure communication success'],
-    a:2, e:'The lesson\'s Communications Process table shows that the sender\'s side includes Experience, Attitudes, and Skills. These factors shape how the sender encodes and delivers the message — just as the receiver\'s experiences and attitudes shape how the message is decoded.' },
+{cat:'X',pill:'cat-exit',label:'Exit Routes',
+q:'What does the lesson say about "openings into an exit"?',
+o:['There is no limit to the number of openings as long as each is marked','Openings into an exit must be limited to prevent unprotected areas from connecting directly to the exit path','Openings may include windows for natural light','Exits must have at least two openings for ventilation'],
+a:1,e:'Openings into an exit must be limited. This prevents unprotected areas from directly connecting to the protected exit path, which could allow fire and smoke to enter the exit route.'},
+
+{cat:'X',pill:'cat-exit',label:'Exit Routes',
+q:'What key principle governs the condition of exit routes during all working hours?',
+o:['Exit routes may be used for storage if clearly marked','Exit routes must be free and unobstructed, and the danger to employees and patients must be minimized','Exit routes should be locked except during drills','Exit routes must be staffed by a safety warden at all times'],
+a:1,e:'The lesson states that exit routes must be free and unobstructed, and the danger to employees and patients must be minimized. Blocking an exit route with equipment, supplies, or furniture is a violation.'},
+
+{cat:'X',pill:'cat-exit',label:'Exit Routes',
+q:'Where must exit discharge lead?',
+o:['To a stairwell or elevator lobby','To an interior refuge room','Directly outside or to a street, walkway, refuge area, or open area with access to the outside','To the building\'s main lobby for headcount'],
+a:2,e:'Exit discharge must lead directly outside or to a street, walkway, refuge area, or open area with access to the outside. It cannot dead-end inside the building.'},
+
+{cat:'X',pill:'cat-exit',label:'Exit Routes',
+q:'What does the lesson emphasize about being alert to fire exit conditions?',
+o:['Only safety officers need to monitor exit conditions','All staff should be helped to be alert to any obstruction to fire exits and fire routes','Exit monitoring is exclusively a facilities management responsibility','Obstructions are acceptable if they are temporary and lightweight'],
+a:1,e:'One of the listed strategies is to "help all staff to be alert to any obstruction to fire exits/fire routes." Fire exit safety is a shared responsibility of every employee, not just safety officers.'},
+
+{cat:'X',pill:'cat-exit',label:'Exit Routes',
+q:'Why is it important to "always know where fire extinguishers are located" according to the strategies section?',
+o:['So employees can report missing extinguishers to management','Because in an emergency, seconds matter — knowing extinguisher locations allows faster response before a fire grows uncontrollable','So employees can perform monthly inspections themselves','Because extinguishers also serve as directional markers for exit routes'],
+a:1,e:'Knowing where extinguishers are located is critical because in a fire emergency, time is everything. The lesson lists this as a key strategy: always know where the fire extinguishers are located so they can be used immediately when needed.'},
+
+// ── EAP (15) ─────────────────────────────────────────────
+{cat:'E',pill:'cat-eap',label:'EAP',
+q:'What does EAP stand for?',
+o:['Employee Assistance Program','Emergency Action Plan','Evacuation and Assembly Procedure','Emergency Alert Protocol'],
+a:1,e:'EAP stands for Emergency Action Plan. It is the formal written document that outlines what employees must do during various emergency situations in the workplace.'},
+
+{cat:'E',pill:'cat-eap',label:'EAP',
+q:'According to the lesson, in what form must an Emergency Action Plan generally be kept?',
+o:['It may be stored only on a company intranet','It must be in writing, kept in the workplace, and available to employees for review','It should be memorized by supervisors only','It needs to be filed with OSHA and kept off-site'],
+a:1,e:'The lesson states that an EAP must be in writing, kept in the workplace, and available to employees for review. The only exception is employers with 10 or fewer employees, who may communicate it orally.'},
+
+{cat:'E',pill:'cat-eap',label:'EAP',
+q:'Under what condition may an employer communicate the EAP orally rather than in writing?',
+o:['If all employees have received fire safety training','If the employer has 10 or fewer employees','If the building has a sprinkler system installed','If the plan has been approved by the local fire marshal'],
+a:1,e:'An employer with 10 or fewer employees may communicate the EAP orally to employees instead of maintaining a written plan. Larger employers must maintain a written plan.'},
+
+{cat:'E',pill:'cat-eap',label:'EAP',
+q:'Which of the following is a required procedure in an Emergency Action Plan?',
+o:['Procedures for employee vacation scheduling during emergencies','Procedures for reporting a fire','Procedures for contacting the company\'s insurance provider','Procedures for disciplining employees who fail to follow the plan'],
+a:1,e:'The EAP must include procedures for: reporting a fire, emergency evacuations, employees who remain to operate critical plant operations before evacuating, and accounting for all employees and patients after evacuation.'},
+
+{cat:'E',pill:'cat-eap',label:'EAP',
+q:'What must the EAP include regarding employees who remain at their posts before evacuating?',
+o:['These employees are exempt from the EAP requirements','Procedures for employees who remain to operate critical plant operations before they evacuate','A list of employees volunteering to stay behind indefinitely','Authorization from the fire department for employees to remain'],
+a:1,e:'The EAP must include procedures for employees who remain to operate critical plant operations before they evacuate. These employees have special roles and need clear guidance to complete their tasks safely before leaving.'},
+
+{cat:'E',pill:'cat-eap',label:'EAP',
+q:'What must happen after an evacuation according to the EAP?',
+o:['Employees must immediately return to their workstations','All employees and patients must be accounted for','The building must be declared safe by a supervisor before re-entry is allowed','Employees must complete an incident report form on-site'],
+a:1,e:'The EAP requires accounting for all employees and patients after evacuation. This ensures no one is left behind in the building and allows emergency responders to know if anyone is still inside.'},
+
+{cat:'E',pill:'cat-eap',label:'EAP',
+q:'Who must be designated and trained under the Emergency Plans section?',
+o:['External firefighters and emergency medical technicians','Employees to assist in a safe and orderly evacuation of other employees','Only senior management and department heads','Randomly selected employees on a rotating basis'],
+a:1,e:'The employer must designate and train specific employees to assist in a safe and orderly evacuation of other employees. These are the people who guide others to safety during an emergency.'},
+
+{cat:'E',pill:'cat-eap',label:'EAP',
+q:'When should the EAP be reviewed with employees?',
+o:['Only when there is a new OSHA regulation','When they start their job, when their responsibilities in the plan change, or when the plan itself changes','Once every five years as part of a regulatory review','Only after an actual emergency has occurred'],
+a:1,e:'The EAP must be reviewed with employees: when they start their job, when their responsibilities in the plan change, or when the plan changes. This keeps all employees current with their specific emergency roles.'},
+
+{cat:'E',pill:'cat-eap',label:'EAP',
+q:'What are "evacuation wardens" and what is their purpose?',
+o:['External contractors who manage building evacuations','Trained employees available at all times during working hours to swiftly move employees from danger to safe areas','Security guards who lock down the building during emergencies','OSHA inspectors who verify evacuation compliance'],
+a:1,e:'Evacuation wardens are trained employees who must be available at all times during working hours. Their purpose is to swiftly move employees from the danger location to safe areas during an emergency.'},
+
+{cat:'E',pill:'cat-eap',label:'EAP',
+q:'What must evacuation wardens know and be aware of?',
+o:['The exact location of all OSHA documentation','The correct place to direct employees, workplace layout, alternative escape routes, and the needs of handicapped employees','The building\'s insurance claim procedures','The names of all employees in the building at any given time'],
+a:1,e:'Wardens must know the correct place to direct employees, be trained in workplace layout and alternative escape routes, be aware of handicapped employees needing extra assistance, check all rooms and enclosed spaces, and verify that all employees reach safe areas.'},
+
+{cat:'E',pill:'cat-eap',label:'EAP',
+q:'What does the RACE acronym stand for in the Common Protocol/Procedure section?',
+o:['Run, Alert, Contain, Exit','Rescue, Alarm, Contain/confine, Extinguish or evacuate','React, Assess, Call, Evacuate','Report, Activate, Collect, Escape'],
+a:1,e:'RACE stands for: R – Rescue, A – Alarm, C – Contain/confine, E – Extinguish or evacuate. This is the common fire response protocol used in many workplace settings, especially healthcare.'},
+
+{cat:'E',pill:'cat-eap',label:'EAP',
+q:'In the RACE protocol, what does the "C" step (Contain/Confine) accomplish?',
+o:['It means calling the fire department immediately','It means confining the fire by closing doors and windows to limit its spread','It means checking that all employees are accounted for','It means collecting all important documents before evacuating'],
+a:1,e:'The "C" in RACE stands for Contain/Confine — closing doors, windows, and fire doors to limit the spread of fire and smoke. Containment buys time for evacuation and reduces the fire\'s growth.'},
+
+{cat:'E',pill:'cat-eap',label:'EAP',
+q:'The lesson says Emergency Plans should address emergencies that the organization can reasonably expect. Which of the following is NOT listed as an example?',
+o:['Fire','Typhoon','Floods','Terrorist attack'],
+a:3,e:'The lesson lists: fire, toxic chemical release, typhoon, and floods as emergencies to plan for, plus "others." A terrorist attack is not specifically listed among the expected emergencies in this lesson.'},
+
+{cat:'E',pill:'cat-eap',label:'EAP',
+q:'What does the Emergency Plans section say about an alarm system?',
+o:['Alarms are optional if the building has sprinklers','An alarm system for employees must be included in emergency plans','Verbal notification by supervisors is sufficient instead of an alarm system','Alarm systems must be tested only during scheduled inspections'],
+a:1,e:'The Emergency Plans section lists an alarm system for employees as a required element. Alarms provide the immediate, facility-wide notification needed to initiate a rapid and orderly evacuation.'},
+
+{cat:'E',pill:'cat-eap',label:'EAP',
+q:'What does the lesson mean by "emergency care procedures" in the Emergency Plans?',
+o:['Procedures for providing first aid to injured employees during evacuation','The medical treatment procedures for patients who cannot be moved','Procedures related to the overall emergency response, including who does what during the event','Insurance reimbursement procedures for emergency-related medical expenses'],
+a:2,e:'Emergency care procedures are part of the EAP covering all actions needed during the emergency event — including who responds, what roles people play, and how care is maintained for occupants throughout the emergency.'},
+
+// ── EXTINGUISHERS (15) ────────────────────────────────────
+{cat:'T',pill:'cat-ext',label:'Extinguishers',
+q:'What is the correct sequence for using a fire extinguisher, as given by the PASS acronym?',
+o:['Push, Aim, Squeeze, Sweep','Pull the pin, Aim low, Squeeze the lever, Sweep the fire','Point, Activate, Smother, Secure','Prepare, Activate, Suppress, Signal'],
+a:1,e:'PASS stands for: Pull the pin, Aim low, Squeeze the lever, Sweep the fire. This is the standard sequence for operating a portable fire extinguisher safely and effectively.'},
+
+{cat:'T',pill:'cat-ext',label:'Extinguishers',
+q:'How often must portable fire extinguishers be visually inspected?',
+o:['Once a year during the annual safety audit','Every 30 days','Every 6 months','Only when they are relocated or replaced'],
+a:1,e:'The lesson states that portable extinguishers must be inspected every 30 days. In addition, annual maintenance is required. The 30-day visual inspection ensures extinguishers are always ready for use.'},
+
+{cat:'T',pill:'cat-ext',label:'Extinguishers',
+q:'In addition to the monthly 30-day inspection, what additional maintenance requirement applies to fire extinguishers?',
+o:['A quarterly pressure test','Annual maintenance','A five-year complete overhaul','Daily visual checks by each department'],
+a:1,e:'Fire extinguishers require both a 30-day visual inspection and annual maintenance. Annual maintenance is a more thorough check of the extinguisher\'s components, pressure, and readiness.'},
+
+{cat:'T',pill:'cat-ext',label:'Extinguishers',
+q:'What must be done to fire extinguishers and standpipe hoses after visual inspection?',
+o:['They must be refilled regardless of whether they were used','They must be visually inspected annually and tagged with the date of the inspection','They must be replaced every two years as a standard practice','They must be signed off by the local fire marshal'],
+a:1,e:'Fire extinguishers and standpipe hoses must be visually inspected annually and tagged with the date of inspection. The tag creates a record showing the extinguisher has been checked.'},
+
+{cat:'T',pill:'cat-ext',label:'Extinguishers',
+q:'When must employees be educated about fire extinguisher use?',
+o:['Only once during initial onboarding, and never again','Upon employment, if their role or equipment changes, and annually','Every five years unless there is an incident','Only after a fire extinguisher is actually used in the workplace'],
+a:1,e:'Employee education on fire extinguisher use must occur: upon employment, if their role or equipment changes, and annually. This ensures all employees stay current with proper extinguisher use.'},
+
+{cat:'T',pill:'cat-ext',label:'Extinguishers',
+q:'What is the maximum travel distance an employee should have to walk to reach a fire extinguisher in a general workplace area?',
+o:['50 feet','75 feet','100 feet','30 feet'],
+a:1,e:'The maximum travel distance to a fire extinguisher in a general workplace area is 75 feet. For Class K (grease fire) areas, the requirement is stricter at 30 feet.'},
+
+{cat:'T',pill:'cat-ext',label:'Extinguishers',
+q:'How must fire extinguishers be mounted and placed according to the lesson?',
+o:['They may be stored in locked closets as long as the location is posted','They must be mounted, located, and identified so they are readily accessible without subjecting employees to possible injury','They must be placed at least 6 feet off the ground','They can be placed anywhere as long as they are visible'],
+a:1,e:'The employer must mount, locate, and identify extinguishers so they are readily accessible to employees without subjecting employees to possible injury. Obstructed or poorly placed extinguishers are a violation.'},
+
+{cat:'T',pill:'cat-ext',label:'Extinguishers',
+q:'On what basis are fire extinguishers selected and distributed throughout a workplace?',
+o:['Based on the size of the building and number of employees only','Based on the classes of anticipated workplace fires and the size and degree of hazards affecting their use','Based purely on cost and availability','Based on the recommendations of the building architect'],
+a:1,e:'Fire extinguishers are selected and distributed based on the classes of anticipated workplace fires and the size and degree of hazards affecting their use. A kitchen needs a Class K extinguisher; an electrical room needs a Class C-rated one.'},
+
+{cat:'T',pill:'cat-ext',label:'Extinguishers',
+q:'What does the Fire Extinguishers section cover in terms of scope?',
+o:['Only the purchase and replacement of fire extinguishers','The placement, use, maintenance, testing, training, and education related to portable fire extinguishers','Only the inspection and tagging requirements','The design and manufacture standards for extinguishers'],
+a:1,e:'The scope of the Fire Extinguishers section covers: placement, use, maintenance, testing of portable fire extinguishers provided for employees, and training and education of employees in their use.'},
+
+{cat:'T',pill:'cat-ext',label:'Extinguishers',
+q:'What does "Aim low" mean in the PASS technique?',
+o:['Aim at the smoke above the fire to prevent it from spreading','Aim the extinguisher nozzle at the base of the fire, not at the flames themselves','Aim at the nearest wall to deflect the agent toward the fire','Aim below the extinguisher handle to avoid recoil'],
+a:1,e:'"Aim low" means directing the extinguishing agent at the base of the fire — the fuel source — rather than at the visible flames. Hitting the base is more effective because it cuts off the fuel supply.'},
+
+{cat:'T',pill:'cat-ext',label:'Extinguishers',
+q:'What does "Sweep the fire" mean in the PASS technique?',
+o:['Physically sweep burning material away from the fire with a broom','Move the extinguisher nozzle from side to side in a sweeping motion across the base of the fire','Direct the agent only at the center of the fire','Sweep the surrounding area for other fire hazards while extinguishing'],
+a:1,e:'"Sweep the fire" means moving the extinguisher nozzle side to side in a sweeping motion across the base of the fire. This ensures the extinguishing agent covers the entire fuel area, not just one spot.'},
+
+{cat:'T',pill:'cat-ext',label:'Extinguishers',
+q:'Why is it important to know where fire extinguishers are located BEFORE an emergency occurs?',
+o:['So employees can inspect them during slow periods at work','Because in a fire emergency, time is critical — searching for an extinguisher wastes precious seconds','So that they can be moved to a more convenient location if needed','Because OSHA requires employees to report extinguisher locations to supervisors weekly'],
+a:1,e:'The lesson states: "Always know where they are located." In a fire, seconds count. Searching for an extinguisher during an active fire wastes the critical time window in which a small fire can be safely extinguished.'},
+
+{cat:'T',pill:'cat-ext',label:'Extinguishers',
+q:'Which of the following is a correct statement about using a Class C extinguisher?',
+o:['It uses water as its primary extinguishing agent','It is used for combustible metal fires','It requires electrically nonconductive extinguishing media to protect the user from electrocution','It is exclusively used for kitchen grease fires'],
+a:2,e:'Class C extinguishers use electrically nonconductive extinguishing media. This is essential for safety when dealing with energized electrical equipment, where using a water-based agent could electrocute the user.'},
+
+{cat:'T',pill:'cat-ext',label:'Extinguishers',
+q:'What is the first step in the PASS fire extinguisher technique?',
+o:['Aim the nozzle at the fire','Squeeze the handle','Pull the pin','Sweep the fire'],
+a:2,e:'The first step is to Pull the pin. Pulling the pin breaks the tamper seal and enables the lever to be depressed, allowing the extinguishing agent to discharge. Without this step, the extinguisher cannot be activated.'},
+
+{cat:'T',pill:'cat-ext',label:'Extinguishers',
+q:'What does "Important! Dates must be recorded, and all extinguishers tagged" mean for workplace compliance?',
+o:['Dates are optional documentation kept only for internal quality reports','Recording inspection dates and tagging extinguishers creates a verifiable maintenance record proving they are regularly checked and safe to use','Tags are only required after an extinguisher has been used and refilled','Tagging applies only to extinguishers that have failed inspection'],
+a:1,e:'Recording dates and tagging every extinguisher creates a documentable compliance record. This proves to OSHA inspectors and others that each extinguisher has been regularly inspected and is in a known state of readiness.'},
+
+// ── COMMUNICATION (20) ────────────────────────────────────
+{cat:'C',pill:'cat-comm',label:'Communication',
+q:'What is the primary objective of any workplace safety communication program, according to the lesson?',
+o:['To fulfill OSHA reporting requirements','To change the behavior of employees','To reduce the company\'s insurance premiums','To satisfy annual audit requirements'],
+a:1,e:'The lesson states clearly: "The main objective of any workplace safety communication or program is to change behavior." Everything — messaging, culture, and strategy — aims at behavioral change.'},
+
+{cat:'C',pill:'cat-comm',label:'Communication',
+q:'What are the five elements of an effective communication plan listed in the lesson?',
+o:['Sender, message, channel, receiver, and noise','Receiver, message, communication process, timeframe, and evaluative process','Goal, strategy, tactic, execution, and measurement','Encoding, decoding, medium, feedback, and noise'],
+a:1,e:'The five elements of an effective communication plan are: a clearly defined receiver, message, communication process, timeframe, and evaluative process.'},
+
+{cat:'C',pill:'cat-comm',label:'Communication',
+q:'According to the "Four Important Realities," what percentage of a message\'s meaning and impact comes from HOW you say it?',
+o:['20%','50%','80%','100%'],
+a:2,e:'The lesson states that communication is more psychological than anything: "\'How\' you say something accounts for 80% of the meaning and impact." Delivery, tone, and style dominate over the literal content.'},
+
+{cat:'C',pill:'cat-comm',label:'Communication',
+q:'Which of the Four Important Realities addresses the prevalence of miscommunication?',
+o:['Communication is the main way we exchange ideas and get things done','Miscommunication is more prevalent than good communication','Communication is more psychological than anything','The best way to get results is to improve your communication style'],
+a:1,e:'The second reality states: "Miscommunication is more prevalent than good communication." Recognizing this encourages safety communicators to be more deliberate, verify understanding, and use multiple channels.'},
+
+{cat:'C',pill:'cat-comm',label:'Communication',
+q:'What is "noise" in the Communication Process model?',
+o:['Literal sound that prevents a safety message from being heard','Any factor — physical, psychological, or semantic — that interferes with and distorts the message between sender and receiver','The volume setting of a safety announcement system','The number of people who receive the communication'],
+a:1,e:'In the Communication Process model, noise refers to anything that interferes with the transmission of a message from sender to receiver. This includes physical sounds, psychological distractions, language barriers, or any other distortion factor.'},
+
+{cat:'C',pill:'cat-comm',label:'Communication',
+q:'What are the four keys to communication listed in the lesson?',
+o:['Assertive, Brief, Clear, Direct','Interactive, Informative, Positive, Productive','Accurate, Brief, Consistent, Documented','Timely, Targeted, Tested, Tracked'],
+a:1,e:'The four keys to communication are: Interactive, Informative, Positive, and Productive. These qualities define what effective workplace safety communication should be.'},
+
+{cat:'C',pill:'cat-comm',label:'Communication',
+q:'What happens to a safety message the more people it passes through?',
+o:['It gains credibility and authority','It becomes more standardized and consistent','It becomes more distorted','It reaches more people and achieves greater impact'],
+a:2,e:'The lesson notes: "The more people a communication goes through, the more distorted it becomes." This is why direct communication channels are preferred for critical safety information.'},
+
+{cat:'C',pill:'cat-comm',label:'Communication',
+q:'What does the lesson mean when it says effective communication "reaches the heart as well as the mind"?',
+o:['Safety messages must include emotional manipulation to be effective','Safety communication must be not only informative but emotionally resonant — connecting personally with employees — to truly change behavior','Heart refers to the cardiac safety training component of the lesson','Safety messages should be delivered by beloved leaders for maximum impact'],
+a:1,e:'Reaching the heart means connecting emotionally, not just intellectually. Safety communication that resonates personally — through stories, values, and genuine concern — is more likely to change behavior than purely informational messages.'},
+
+{cat:'C',pill:'cat-comm',label:'Communication',
+q:'The lesson lists four types of workers who seek information differently based on perceived risk. Which of the following IS one of those four types?',
+o:['Aggressive individuals','Collaborative individuals','Proactive individuals','Disciplined individuals'],
+a:2,e:'The four types are: Responsive, Avoidant, Proactive, and Indifferent individuals. Understanding which type a worker is helps communicators tailor their approach to reach them effectively.'},
+
+{cat:'C',pill:'cat-comm',label:'Communication',
+q:'Which of the following common worker attitudes makes safety communication challenging, as listed in the lesson?',
+o:['"I always follow safety protocols carefully."','"I completed all required safety certifications."','"It won\'t happen to me! I\'ve been doing this job for 15 years."','"I appreciate my company\'s commitment to my safety."'],
+a:2,e:'The lesson lists resistant attitudes including: "It won\'t happen to me!", "I\'ve been doing this job for 15 years…", "I\'m CAREFUL!", and "I don\'t want to get someone in trouble!" These attitudes obstruct effective safety communication.'},
+
+{cat:'C',pill:'cat-comm',label:'Communication',
+q:'What does the lesson say about communicating safety information to influence behavior?',
+o:['Focus exclusively on the negative consequences of non-compliance','Convey your ideas, discuss concerns, share priorities, indicate how change benefits the individual, and present mutually beneficial solutions','Avoid discussing objections to keep the message positive and simple','Use authority and hierarchy to mandate compliance'],
+a:1,e:'The lesson advises: convey your ideas, discuss concerns or objections, share important criteria and priorities, indicate how change will benefit the individual, and present solutions that contain your priorities and theirs. Influence through understanding, not authority.'},
+
+{cat:'C',pill:'cat-comm',label:'Communication',
+q:'What does "Use it or lose it" mean in the context of communication effectiveness?',
+o:['If employees don\'t use safety equipment, it must be replaced','Communication skills deteriorate without regular practice; safety communication must be consistently maintained and repeated to remain effective','Safety regulations that are not enforced will be abandoned by employees','Only use communication channels that have been proven effective in the past'],
+a:1,e:'"Use it or lose it" means that communication skills and habits must be consistently practiced. Safety messaging that stops gets forgotten; continuous reinforcement is needed to maintain safety awareness and behavior.'},
+
+{cat:'C',pill:'cat-comm',label:'Communication',
+q:'How does the lesson recommend planning workplace safety messages?',
+o:['As formal policy documents reviewed by legal counsel','Like a mini advertising campaign, using marketing-based tactics','As technical bulletins circulated only to supervisors','As annual compliance training events'],
+a:1,e:'The lesson recommends treating safety messages like a mini advertising campaign. Marketing-based tactics — consistent branding, personal relevance, multiple message placements — are the secret to highly successful safety communication.'},
+
+{cat:'C',pill:'cat-comm',label:'Communication',
+q:'What are the three ways to engage employees with a workplace safety message listed in the lesson?',
+o:['Speaking, writing, and demonstrating','Watching it (training videos), hearing it (discussion and feedback), and reading it (posters, email, newsletter)','Mandatory attendance, testing, and certification','Classroom training, on-the-job observation, and written assessment'],
+a:1,e:'The three engagement methods are: Watching it (training videos), Hearing it (discussion and feedback on safety issues), and Reading it (posters, email, newsletter). Multi-channel delivery improves retention and reach.'},
+
+{cat:'C',pill:'cat-comm',label:'Communication',
+q:'Which of the following is a communication tip listed in the lesson?',
+o:['Use as much technical jargon as possible to demonstrate expertise','Avoid stories — stick strictly to facts and data','Tell Stories','Present information only in written format to create documentation'],
+a:2,e:'The communication tips include: Use more Visuals, Tell Stories, Lead by Values, Use Positive Language, Involve Senior Management, Keep it Simple, and Ask more why Questions. Stories make safety messages memorable and relatable.'},
+
+{cat:'C',pill:'cat-comm',label:'Communication',
+q:'What does SMART stand for in the context of communication objectives?',
+o:['Strategic, Measurable, Attainable, Realistic, Timely','Specific, Measurable, Attainable, Relevant, Time-bound','Simple, Meaningful, Actionable, Repeatable, Tested','Structured, Managed, Achievable, Reported, Tracked'],
+a:1,e:'SMART stands for Specific, Measurable, Attainable, Relevant, and Time-bound. Applying this framework to safety communication objectives ensures they are clear, trackable, and achievable.'},
+
+{cat:'C',pill:'cat-comm',label:'Communication',
+q:'According to the lesson, who should deliver a safety message, and why does it matter?',
+o:['The most senior person available, to maximize authority','Anyone who has been trained on the topic, regardless of their relationship with the audience','Someone with credibility and a good relationship with the audience, because a good message badly delivered is lost','Safety officers only, to maintain consistency and compliance'],
+a:2,e:'The lesson states: "Consider who should deliver it, and what credibility they have — a good message badly delivered is lost." The messenger\'s credibility, relationship, and communication skill determine how the message is received.'},
+
+{cat:'C',pill:'cat-comm',label:'Communication',
+q:'What does the lesson say about "Getting the Message Across" regarding the selection of communication methods?',
+o:['Select only one channel and use it consistently to avoid confusion','Consider using several different ways to communicate the same message, selecting the best option for your audience','Always rely on written communication as the primary and most reliable method','Use only face-to-face communication for safety topics'],
+a:1,e:'The lesson advises: consider using several different ways to communicate the same message, then select the best option for your audience. Multi-channel communication ensures broader reach and better comprehension across different types of learners.'},
+
+{cat:'C',pill:'cat-comm',label:'Communication',
+q:'What failure does the lesson warn against in the "Getting the Message Across" section?',
+o:['Sending too many safety messages and creating message fatigue','Failing to plan how to evaluate whether the communication was effective before delivering it','Using humor in safety messages, which reduces credibility','Involving senior management, which can intimidate employees'],
+a:1,e:'The lesson warns: "Plan your method of evaluating success before delivering the communication activity." Not measuring effectiveness means you don\'t know whether the message actually changed behavior — the ultimate goal.'},
+
+{cat:'C',pill:'cat-comm',label:'Communication',
+q:'The lesson lists many topics for safety communication. Which of the following is included?',
+o:['Company financial performance and budget updates','Employee suggestions and wellness programs','Legal compliance documentation and audit preparation','Customer satisfaction surveys and feedback'],
+a:1,e:'The safety communication topics listed include: employee suggestions, wellness programs, workplace violence, incident investigations, emergency preparedness, ergonomics, back safety, fire safety, electrical safety, and slips/trips/falls.'},
+
+// ── MODELS & CONCEPTS (15) ────────────────────────────────
+{cat:'M',pill:'cat-model',label:'Models & Concepts',
+q:'What does the Betari Box Model demonstrate?',
+o:['The proper sequence for encoding and decoding a message','A cyclic relationship where My Attitude affects My Behavior, which affects Your Attitude, which affects Your Behavior — and so on','The organizational structure of a safety committee','The hierarchy of safety regulations from federal to local level'],
+a:1,e:'The Betari Box Model shows: My Attitude → affects → My Behavior → affects → Your Attitude → affects → Your Behavior → which feeds back to affect My Attitude again. It illustrates that attitudes and behaviors are mutually contagious in a workplace.'},
+
+{cat:'M',pill:'cat-model',label:'Models & Concepts',
+q:'How does the Betari Box Model apply to safety leadership?',
+o:['A manager\'s technical knowledge is the most important factor in workplace safety','Only written policies and procedures shape employee safety behavior','A supervisor\'s positive safety attitude can create a positive cycle of safety behavior throughout the team','Training frequency is more important than leadership attitude in shaping safety culture'],
+a:2,e:'The Betari Box shows that a supervisor\'s attitude directly shapes their behavior, which then shapes their team\'s attitudes and behaviors. Positive safety leadership creates a contagious positive safety culture — and the reverse is equally true.'},
+
+{cat:'M',pill:'cat-model',label:'Models & Concepts',
+q:'What are the Eight A\'s of Safety listed in the lesson?',
+o:['Alertness, Agility, Accuracy, Authority, Assessment, Audit, Action, Awareness','Attitudes, Awareness, Action, Accountability, Acknowledge, Assist, Appreciate, Approve','Administration, Auditing, Alerting, Approving, Assessing, Advising, Assigning, Accounting','Analysis, Assessment, Application, Achievement, Allocation, Assurance, Activation, Alignment'],
+a:1,e:'The Eight A\'s of Safety are: Attitudes, Awareness, Action, Accountability, Acknowledge, Assist, Appreciate, and Approve. The first four relate to internal mindset; the last four are interpersonal safety behaviors.'},
+
+{cat:'M',pill:'cat-model',label:'Models & Concepts',
+q:'What does "Safety Culture" mean according to the lesson?',
+o:['A set of mandatory training programs required by law','A mindset and attitude — safety messages must be embedded into every aspect of the company and become the company\'s shared vision and value','A quarterly safety audit conducted by external inspectors','A reward program for employees who follow safety rules'],
+a:1,e:'Safety Culture is defined as a mindset and attitude. Safety messages must be designed into every aspect of the company and must be the company\'s vision — a value for all employees, not just a program or policy.'},
+
+{cat:'M',pill:'cat-model',label:'Models & Concepts',
+q:'What are the five challenges to effective safety communication listed in the lesson?',
+o:['Budget, time, technology, regulations, and staffing','Attitudes, Communication, Competing Priorities, Employee Buy-In, and Creating Safety Awareness','Noise, distortion, distance, language, and culture','Training frequency, leadership support, equipment quality, reward systems, and enforcement'],
+a:1,e:'The five challenges are: Attitudes, Communication, Competing Priorities, Employee Buy-In, and Creating Safety Awareness. Each represents a barrier that safety communicators must strategically address.'},
+
+{cat:'M',pill:'cat-model',label:'Models & Concepts',
+q:'What does the Communication Process model show about the relationship between Encoding and Decoding?',
+o:['Encoding and decoding are the same process performed by the same person','The sender encodes a message; the receiver then decodes it — and both processes are affected by experience, attitudes, skills, and perceptions','Decoding always produces the exact same meaning as the original encoded message','Encoding is only necessary for written communication'],
+a:1,e:'The Communication Process shows that the sender encodes the message while the receiver decodes it. Both sides bring their own experience, attitudes, skills, and perceptions — meaning the decoded message may differ from the originally encoded one.'},
+
+{cat:'M',pill:'cat-model',label:'Models & Concepts',
+q:'In the Communication Process, what factors are listed on the INPUT side that affect how a sender communicates?',
+o:['Budget, time, and authority','Personality/Style, View of others/self, and Communication skills','Noise, distortion, and channel capacity','The audience\'s age, education, and job level'],
+a:1,e:'The Input factors listed are: Personality/Style, View of others/self, and Communication skills. These factors on the sender\'s side determine how the message is formulated and delivered.'},
+
+{cat:'M',pill:'cat-model',label:'Models & Concepts',
+q:'What does the FEEDBACK side of the Communication Process include, according to the lesson?',
+o:['The number of people who received the message','Climate, Complainant\'s behavior, and How well you handle feedback','The written record of communication attempts','The technical quality of the communication channel used'],
+a:1,e:'The Feedback factors are: Climate, Complainant\'s behavior, and How well you handle feedback. These determine whether the communication loop is completed effectively and whether adjustments need to be made.'},
+
+{cat:'M',pill:'cat-model',label:'Models & Concepts',
+q:'What does Safety Culture as a "mindset" mean for how safety messages should be integrated?',
+o:['Safety mindset only applies to employees in hazardous roles','Safety messages should be limited to dedicated training sessions to avoid overwhelming employees','Safety messages must be designed into every aspect of the company — not confined to training events or policy documents','Mindset change is only possible through punitive enforcement of safety rules'],
+a:2,e:'A safety mindset means safety is not just a program — it is embedded everywhere in the organization. Safety messages are woven into daily operations, communications, leadership, and company culture so they become a natural part of how everyone thinks and works.'},
+
+{cat:'M',pill:'cat-model',label:'Models & Concepts',
+q:'The Communication Process model includes a feedback loop. What is the purpose of this loop?',
+o:['To repeat the original message to reinforce retention','To allow the receiver to send a response back to the sender, confirming understanding or prompting clarification','To filter out noise before the message reaches the receiver','To document the communication for compliance purposes'],
+a:1,e:'The feedback loop in the Communication Process allows the receiver to respond to the sender. This two-way exchange allows the sender to verify whether the message was understood correctly and make adjustments if not.'},
+
+{cat:'M',pill:'cat-model',label:'Models & Concepts',
+q:'The lesson cites George Bernard Shaw: "The danger in communication is the illusion that it has been accomplished." What does this mean for safety communication?',
+o:['Communication always succeeds if the sender is confident','Just because a message was sent does not mean it was understood — safety communicators must verify actual comprehension and behavioral change','Shaw is saying that communication is inherently impossible to achieve fully','Safety messages should never be evaluated because evaluation creates false confidence'],
+a:1,e:'Shaw\'s quote warns against assuming communication is complete just because a message was delivered. In safety, sending the message is not enough — you must verify that it was received, understood, and acted upon. Assuming success without verification is dangerous.'},
+
+{cat:'M',pill:'cat-model',label:'Models & Concepts',
+q:'Freeman Teague wrote: "Nothing is so simple it cannot be misunderstood." How does this apply to safety?',
+o:['It means employees should not be trusted with complex safety information','Even the clearest, simplest safety instructions can be misinterpreted, so safety communicators must never assume a message is too obvious to need clarification or reinforcement','It means safety rules should be simplified to single words for better retention','It implies that only complicated safety topics require verification of understanding'],
+a:1,e:'Teague\'s quote is a warning against complacency in safety communication. Even simple safety instructions can be misunderstood. Safety communicators must never assume clarity — they must verify that even basic instructions are correctly understood.'},
+
+{cat:'M',pill:'cat-model',label:'Models & Concepts',
+q:'What does the lesson mean by "Safety Culture" being "the company\'s vision"?',
+o:['The company\'s mission statement must include safety as a bullet point','Safety is a shared organizational value that guides every decision, action, and priority across the entire company — not just a compliance checkbox','Vision means the CEO must personally deliver safety training','Company vision applies only to marketing and branding, not to safety'],
+a:1,e:'When safety is the company\'s vision, it means safety is not an add-on or a compliance exercise — it is a core organizational value that every person, process, and decision reflects. It is why everyone does their work, not just what they do.'},
+
+{cat:'M',pill:'cat-model',label:'Models & Concepts',
+q:'What does the lesson\'s concept of "continual improvement" in safety culture require?',
+o:['Replacing all safety equipment annually regardless of condition','Hiring new safety officers every two years for fresh perspectives','Ongoing involvement and thinking from all people in the safety process — not just the safety department','Annual revision of all safety policies, whether improvement is needed or not'],
+a:2,e:'Continual improvement in safety culture requires ongoing involvement and thinking from all people in the safety process. Safety is never "done" — every near-miss, drill, and incident is an opportunity to learn, adapt, and improve the safety system.'},
+
+{cat:'M',pill:'cat-model',label:'Models & Concepts',
+q:'Why does the lesson list "Competing Priorities" as a challenge to safety communication?',
+o:['Competing priorities means employees work in too many different departments','In busy workplaces, productivity, deadlines, and cost pressures often compete with safety, causing employees and managers to deprioritize safety communication and training','Competing priorities means different regulators have conflicting safety requirements','It refers to competition between safety officers for leadership positions'],
+a:1,e:'Competing Priorities reflects the real-world tension between safety and other organizational demands. When production pressures, deadlines, or cost-cutting create urgency, safety communication and practices are sometimes deprioritized — a critical risk that safety communicators must address.'},
 ];
 
-const TOTAL = Q.length;
-let cur=0, score=0, sc=0, ss=0, sm=0, answered=false, ua=[];
+const TOTAL=Q.length;
+let cur=0,score=0,s1=0,s2=0,s3=0,s4=0,s5=0,s6=0,answered=false,ua=[];
+
+// ua stores: { chosenText, correctText, isCorrect } for review
+// shuffled options stored per question load
+let curShuffled=null; // {opts:[], correctIdx:int}
+
+function shuffle(arr){
+  // Fisher-Yates
+  for(let i=arr.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]]=[arr[j],arr[i]];
+  }
+  return arr;
+}
+
+function buildShuffled(q){
+  // Build indexed pairs, shuffle, find where correct answer landed
+  const correctText=q.o[q.a];
+  const pairs=q.o.map((text,i)=>({text,orig:i}));
+  shuffle(pairs);
+  const newCorrectIdx=pairs.findIndex(p=>p.text===correctText);
+  return {opts:pairs.map(p=>p.text), correctIdx:newCorrectIdx};
+}
 
 function load(){
   const q=Q[cur];
+  curShuffled=buildShuffled(q);
   document.getElementById('qnum').textContent=`Question ${cur+1} of ${TOTAL}`;
   document.getElementById('slive').textContent=`Score: ${score}`;
   document.getElementById('fill').style.width=`${(cur/TOTAL)*100}%`;
@@ -407,7 +706,7 @@ function load(){
   cp.textContent=q.label; cp.className=`cat-pill ${q.pill}`;
   document.getElementById('qtext').textContent=q.q;
   const od=document.getElementById('opts'); od.innerHTML='';
-  q.o.forEach((o,i)=>{
+  curShuffled.opts.forEach((o,i)=>{
     const b=document.createElement('button');
     b.className='opt';
     b.innerHTML=`<span class="ltr">${String.fromCharCode(65+i)}</span><span>${o}</span>`;
@@ -423,23 +722,32 @@ function load(){
 }
 
 function pick(i){
-  if(answered) return;
+  if(answered)return;
   answered=true;
-  const q=Q[cur]; ua.push(i);
+  const q=Q[cur];
+  const correctIdx=curShuffled.correctIdx;
+  const chosenText=curShuffled.opts[i];
+  const correctText=curShuffled.opts[correctIdx];
+  const isCorrect=(i===correctIdx);
+  ua.push({chosenText,correctText,isCorrect});
+
   document.querySelectorAll('.opt').forEach((b,idx)=>{
     b.disabled=true;
-    if(idx===q.a) b.classList.add('correct');
-    else if(idx===i&&i!==q.a) b.classList.add('wrong');
+    if(idx===correctIdx)b.classList.add('correct');
+    else if(idx===i&&!isCorrect)b.classList.add('wrong');
   });
   const fb=document.getElementById('fb');
-  if(i===q.a){
+  if(isCorrect){
     score++;
-    if(q.cat==='C') sc++;
-    else if(q.cat==='S') ss++;
-    else sm++;
+    if(q.cat==='F')s1++;
+    else if(q.cat==='X')s2++;
+    else if(q.cat==='E')s3++;
+    else if(q.cat==='T')s4++;
+    else if(q.cat==='C')s5++;
+    else s6++;
     fb.className='fb correct show';
     fb.innerHTML=`<strong>✅ Correct!</strong> ${q.e}`;
-  } else {
+  }else{
     fb.className='fb wrong show';
     fb.innerHTML=`<strong>❌ Incorrect.</strong> ${q.e}`;
   }
@@ -447,38 +755,42 @@ function pick(i){
   document.getElementById('nxt').className='nxt show';
 }
 
-document.getElementById('nxt').onclick=()=>{ cur++; cur<TOTAL?load():showR(); };
+document.getElementById('nxt').onclick=()=>{cur++;cur<TOTAL?load():showR();};
 
 function showR(){
   document.getElementById('quiz').style.display='none';
   document.getElementById('results').className='results show';
   document.getElementById('rnum').textContent=score;
-  document.getElementById('sc').textContent=sc;
-  document.getElementById('ss').textContent=ss;
-  document.getElementById('sm').textContent=sm;
-  const c=2*Math.PI*60, p=score/TOTAL;
-  setTimeout(()=>{ document.getElementById('ring').style.strokeDashoffset=c-(c*p); },100);
+  document.getElementById('s1').textContent=s1;
+  document.getElementById('s2').textContent=s2;
+  document.getElementById('s3').textContent=s3;
+  document.getElementById('s4').textContent=s4;
+  document.getElementById('s5').textContent=s5;
+  document.getElementById('s6').textContent=s6;
+  const c=2*Math.PI*60,p=score/TOTAL;
+  setTimeout(()=>{document.getElementById('ring').style.strokeDashoffset=c-(c*p);},100);
   let t,m;
-  if(score===30){t='🏆 Perfect — Safety Expert!';m='A flawless 30/30! You have mastered every concept in this Safety in Telecommunications lesson. Outstanding!';}
-  else if(score>=25){t='🌟 Safety Champion!';m='Excellent work! You have a strong command of safety communication, culture, and key models. Very well done.';}
-  else if(score>=20){t='📚 Safety-Conscious Learner!';m='Good effort! You know the material well. Review the items you missed to build a complete understanding.';}
-  else if(score>=15){t='📖 Building Awareness!';m='You\'re on the right track. Re-read the lesson with focus on the models, communication strategies, and safety culture concepts.';}
-  else {t='🕯️ Start the Journey!';m:'Every safety professional starts somewhere. Study the lesson carefully — these concepts can save lives when applied correctly.';}
+  const pct=Math.round((score/TOTAL)*100);
+  if(score===100){t='🏆 Perfect — Safety Master!';m='A flawless 100/100! You have complete mastery of Fire Safety, Exit Routes, EAP, Extinguishers, Communication, and Safety Models. Outstanding!'}
+  else if(score>=85){t='🌟 Safety Expert!';m=`Excellent — ${score}/100 (${pct}%)! You have a strong, broad command of both lessons. Review any missed items to achieve mastery.`}
+  else if(score>=70){t='📚 Proficient Learner!';m=`Good work — ${score}/100 (${pct}%). You know the material well. Focus on the categories where you lost points for a stronger performance.`}
+  else if(score>=50){t='📖 Developing Skills!';m=`${score}/100 (${pct}%). You have the foundations. Re-study the lesson sections where you struggled and try again.`}
+  else{t='🕯️ Keep Studying!';m=`${score}/100 (${pct}%). Review both lessons carefully — Fire Safety and Safety in Telecommunications — and try again. You can do this!`}
   document.getElementById('rtitle').textContent=t;
   document.getElementById('rmsg').textContent=m;
 
   const rv=document.getElementById('rev'); rv.innerHTML='';
   Q.forEach((q,i)=>{
-    const ok=ua[i]===q.a;
+    const r=ua[i];
     const d=document.createElement('div'); d.className='rev-item';
     d.innerHTML=`<div class="rq">${i+1}. [${q.label}] ${q.q}</div>
-      <div class="${ok?'ok':'bad'}">${ok?'✅ Correct: ':'❌ Your answer: '}${q.o[ua[i]]}${!ok?` | Correct: ${q.o[q.a]}`:''}</div>`;
+      <div class="${r.isCorrect?'ok':'bad'}">${r.isCorrect?'✅ Correct: ':'❌ Your answer: '}${r.chosenText}${!r.isCorrect?` | Correct: ${r.correctText}`:''}</div>`;
     rv.appendChild(d);
   });
 }
 
 function restart(){
-  cur=0;score=0;sc=0;ss=0;sm=0;answered=false;ua=[];
+  cur=0;score=0;s1=0;s2=0;s3=0;s4=0;s5=0;s6=0;answered=false;ua=[];curShuffled=null;
   document.getElementById('results').className='results';
   document.getElementById('quiz').style.display='block';
   document.getElementById('ring').style.strokeDashoffset=377;
